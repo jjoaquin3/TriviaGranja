@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.joaquin.triviagranja.jordy.menu"
+    android:background="@drawable/menu_fondo"
+    android:scaleType="fitCenter"
+    >
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow
+            android:id="@+id/menu_seccion_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:background="@android:color/transparent"
+            >
+            <LinearLayout
+                android:layout_width="200sp"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:background="@android:color/transparent"
+                >
+            </LinearLayout>
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tex_menu_titulo"
+                android:background="@drawable/menu_titulo" />
+            <LinearLayout
+                android:layout_width="200sp"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menu_seccion_t1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            >
+
+            <Button
+                android:id="@+id/btn_menu_champey"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_champey"
+                android:onClick="Actbtn_menu_champey"
+                />
+            <Button
+                android:id="@+id/btn_menu_cenotes_candelaria"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_cenotes"
+                android:onClick="Actbtn_menu_cenotes_candelaria"
+                />
+            <Button
+                android:id="@+id/btn_menu_hun_nal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_hunnal"
+                android:onClick="Actbtn_menu_hun_nal"
+                />
+            <Button
+                android:id="@+id/btn_menu_tikal"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_tikal"
+                android:onClick="Actbtn_menu_tikal"
+                />
+
+            <Button
+                android:id="@+id/btn_menu_laguna_lachua"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_lagunalachua"
+                android:onClick="Actbtn_menu_laguna_lachua"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menu_seccion_t2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_menu_laguna_brava"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_lagunabrava"
+                android:onClick="Actbtn_menu_laguna_brava"
+                />
+            <Button
+                android:id="@+id/btn_menu_mirador"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_mirador"
+                android:onClick="Actbtn_menu_mirador"
+                />
+            <Button
+                android:id="@+id/btn_menu_laguna_mandalena"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_lagunamagdalena"
+                android:onClick="Actbtn_menu_laguna_mandalena"
+                />
+            <Button
+                android:id="@+id/btn_menu_santo_domingo"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_santodom"
+                android:onClick="Actbtn_menu_santo_domingo"
+                />
+            <Button
+                android:id="@+id/btn_menu_cartagena"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/menu_cartagena"
+                android:onClick="Actbtn_menu_cartagena"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menu_seccion_return"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0" >
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="100sp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/lkd"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:background="@drawable/menu_btn_ret_efecto"
+                android:onClick="Actbtn_return"/>
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="100sp"
+                android:layout_weight="1" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -157,8 +157,8 @@
 
             <Button
                 android:id="@+id/lkd"
-                android:layout_width="200sp"
-                android:layout_height="200sp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:background="@drawable/menu_btn_ret_efecto"
                 android:onClick="Actbtn_return"/>
 

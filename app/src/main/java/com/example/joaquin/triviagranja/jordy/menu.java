@@ -101,14 +101,15 @@ public class menu extends AppCompatActivity {
                  break;
              case 3://Lugar No. 3 (cerrar todo)
                  Toast.makeText(getApplicationContext(), lugar, Toast.LENGTH_LONG).show();
-                 /*BloqBotones();
+                 BloqBotones();
                  Runnable clickButton = new Runnable() {
                      @Override
                      public void run() {
                          finish();
                      }
                  };
-                 v.postDelayed(clickButton, 2000); //Delay for 3 seconds to show the result*/
+                 v.postDelayed(clickButton, 2000); //Delay for 3 seconds to show the result
+
                  break;
          }
 

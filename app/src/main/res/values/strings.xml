@@ -5,4 +5,25 @@
     <string name="img_conteo_numeros">img_conteo_numeros</string>
     <string name="img_conteo_titular">img_conteo_titular</string>
 
+    <!-- descripción de los imageView -->
+    <string name="IVdescripcion">Descripcion Default</string>
+
+    <!-- Title Configuración -->
+    <string name="TTeditCategoria">Editar Categoría</string>
+    <string name="TTeditPreguntas">Editar Pregunta</string>
+    <string name="TTeditRespuesta">Editar Respuesta</string>
+    <string name="TTedit">Configuración</string>
+
+    <!-- Labels Configuración -->
+    <string name="LBcorrecta">Es correcta?</string>
+    <string name="LBtexto">Texto*</string>
+    <string name="LBpuntos">Puntos*</string>
+    <string name="LBaudio">Audio</string>
+    <string name="LBnombre">Nombre*</string>
+    <string name="LBimagen">Imagen*</string>
+    <string name="LBnuevaPass">Contraseña nueva</string>
+    <string name="LBviejaPass">Contraseña anterior</string>
+
+    <!-- Buttons Configuración -->
+    <string name="BTapply">Apply</string>
 </resources>

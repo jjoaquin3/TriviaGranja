@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.joaquin.triviagranja.victor.TriviaActivity"
+    android:background="@drawable/fondotrivia"
+    android:contentDescription="@string/IVdescripcion">
+
+    <TextView
+        android:layout_width="@dimen/Ancho_Titulo"
+        android:layout_height="@dimen/Alto_Titulo"
+        android:id="@+id/TVtextoPregunta"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/prueba"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/IVdescripcion"
+        android:text="¿ Semuch Champey es un puente natural de piedra?"
+        android:textSize="@dimen/Text_Size_Preguntas"
+        android:textColor="@android:color/white"
+        android:paddingTop="@dimen/Padding_Top_Pregunta"
+        android:paddingStart="@dimen/Padding_Lateral_Pregunta"
+        android:paddingEnd="@dimen/Padding_Lateral_Pregunta"
+        android:gravity="center_horizontal"
+        android:visibility="visible" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/Margen_Izquierod_Respuestas"
+        android:layout_marginTop="@dimen/Margen_Top_Checks_Respuestas">
+
+        <!--Respuesta 1-->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Margen_Entre_Respuestas"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/Tamanho_Check"
+                android:layout_height="@dimen/Tamanho_Check"
+                android:id="@+id/IVrespuesta1"
+                android:src="@drawable/checktrivia"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                android:contentDescription="@string/IVdescripcion" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/Text_Size_Respuestas"
+                android:id="@+id/TVrespuesta1"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                />
+
+        </TableRow>
+
+        <!--Respuesta 2-->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Margen_Entre_Respuestas"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/Tamanho_Check"
+                android:layout_height="@dimen/Tamanho_Check"
+                android:id="@+id/IVrespuesta2"
+                android:src="@drawable/checktrivia"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                android:contentDescription="@string/IVdescripcion" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/Text_Size_Respuestas"
+                android:id="@+id/TVrespuesta2"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                />
+
+        </TableRow>
+
+        <!--Respuesta 3-->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Margen_Entre_Respuestas"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/Tamanho_Check"
+                android:layout_height="@dimen/Tamanho_Check"
+                android:id="@+id/IVrespuesta3"
+                android:src="@drawable/checktrivia"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                android:contentDescription="@string/IVdescripcion" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/Text_Size_Respuestas"
+                android:id="@+id/TVrespuesta3"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                />
+
+        </TableRow>
+
+        <!--Respuesta 4-->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Margen_Entre_Respuestas"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/Tamanho_Check"
+                android:layout_height="@dimen/Tamanho_Check"
+                android:id="@+id/IVrespuesta4"
+                android:src="@drawable/checktrivia"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                android:contentDescription="@string/IVdescripcion" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/Text_Size_Respuestas"
+                android:id="@+id/TVrespuesta4"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas" />
+
+        </TableRow>
+    </TableLayout>
+
+    <ImageView
+        android:layout_width="@dimen/Ancho_Tiempo"
+        android:layout_height="@dimen/Alto_Tiempo"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/tiempo"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/IVdescripcion" />
+
+    <ImageView
+        android:layout_width="@dimen/Tamanho_Puntos"
+        android:layout_height="@dimen/Tamanho_Puntos"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/puntos"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/IVdescripcion" />
+
+</RelativeLayout>

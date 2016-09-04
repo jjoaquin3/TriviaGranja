@@ -18,7 +18,11 @@
 
         <activity android:name=".jordy.menu" />
         <activity android:name=".jose.conteo" />
-
+        <activity android:name=".victor.ListaCategoriaActivity" />
+        <activity android:name=".victor.ListaPreguntaActivity" />
+        <activity android:name=".victor.ListaRespuestaActivity" />
+        <activity android:name=".victor.EditarRespuestaActivity" />
+        <activity android:name=".victor.TriviaActivity" android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

@@ -104,6 +104,30 @@ public class Modelo {
         return respuesta;
     }
 
+    //----------------------------------
+
+    public Categoria getCategoria(String rowid)
+    {
+        Categoria respuesta = null;
+        try {
+            SQLiteDatabase db;
+            db = manejador.getReadableDatabase();
+            Cursor crs = db.query(true,"categoria",new String[] { "rowid", "*" }, " nombre LIKE ? ", new String[]{"%"+rowid+"%"}, null, null, null, null);
+            if(crs != null)
+            {
+                crs.moveToFirst();
+                respuesta = new Categoria(crs.getString(1),crs.getString(2),crs.getString(5),crs.getString(3),crs.getString(4),crs.getLong(0));
+            }
+            crs.close();
+            db.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
+    //----------------------------------
+
     public Categoria[] getAllCategorias()
     {
         Categoria[] respuesta = null;

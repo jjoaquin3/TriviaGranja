@@ -1,5 +1,6 @@
 package com.example.joaquin.triviagranja.victor;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -41,7 +42,16 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        //recuperar
+        //recuperar categorias
+        Intent intent = getIntent();
+        for (int x = 0; x < categorias.length ; x++) {
+            categorias[x] = modelo.getCategoria(intent.getStringExtra("categoria"+(x+1)));
+        }
+
+/*        for (int x = 0; x < categorias.length ; x++) {
+            categorias[x] = modelo.getCategoria("categoria"+(x+1));
+        }*/
+
         recuperar_info();
         colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
         colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
@@ -89,14 +99,8 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void recuperar_info()
     {
-        //recibir parámetros de las tres categorias
-        Long [] id_cat = new Long [3];
-        id_cat[0] = new Long("1");
-        id_cat[1] = new Long("2");
-        id_cat[2] = new Long("3");
-
         for (int i = 0; i < categorias.length ; i++) {
-            categorias[i] = modelo.getCategoria(id_cat[i]);
+           // categorias[i] = modelo.getCategoria(id_cat[i]);
             if (categorias[i] != null) {
                 Pregunta preguntas_tmp[] = modelo.getAllPreguntasFiltro(categorias[i]);
                 System.out.println("tamaño de " + categorias[i].getNombre() + " " + preguntas_tmp.length);

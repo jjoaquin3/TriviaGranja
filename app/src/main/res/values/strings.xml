@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TriviaGranja</string>
+    <string name="main_logo">main_logo</string>
+    <string name="img_conteo_atras_oscuro">img_conteo_atras_oscuro</string>
+    <string name="img_conteo_numeros">img_conteo_numeros</string>
+    <string name="img_conteo_titular">img_conteo_titular</string>
 
 </resources>

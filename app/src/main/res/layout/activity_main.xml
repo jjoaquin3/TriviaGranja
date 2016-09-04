@@ -7,7 +7,80 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/main_fondo"
+    android:scaleType="fitCenter"
     tools:context="com.example.joaquin.triviagranja.MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:id="@+id/LinearLayout_main_logo">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView_main_logo"
+                android:layout_gravity="center_horizontal|top"
+                android:contentDescription="@string/main_logo"
+                android:background="@drawable/main_logo2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/LinearLayout_main_play">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_main_play"
+                android:background="@drawable/main_play2"
+                android:layout_gravity="top"
+                android:onClick="main_pantalla2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="150dp"
+            android:baselineAligned="false"
+            android:layout_gravity="bottom|right"
+            android:id="@+id/LinearLayout_main_demo"
+            android:paddingBottom="30dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_main_demo"
+                android:layout_gravity="left"
+                android:background="@drawable/main_demo"
+                android:onClick="main_pantalla3" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:id="@+id/FrameLayout_main_video">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:id="@+id/button_main_video"
+                android:clickable="true"
+                android:background="@drawable/main_video"
+                android:onClick="main_pantalla3" />
+        </FrameLayout>
+
+    </FrameLayout>
 
 </RelativeLayout>

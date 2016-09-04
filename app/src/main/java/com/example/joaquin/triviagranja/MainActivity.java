@@ -1,5 +1,6 @@
 package com.example.joaquin.triviagranja;
 import com.example.joaquin.triviagranja.jordy.menu;
+import com.example.joaquin.triviagranja.jose.conteo;
 
 
 import android.content.Intent;
@@ -13,6 +14,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void main_pantalla2(View v)
+    {
+        Intent p2 = new Intent(this, menu.class);
+        startActivity(p2);
+    }
+
+    public void main_pantalla3(View v)
+    {
+        Intent p3 = new Intent(this, conteo.class);
+        startActivity(p3);
     }
 
 }

@@ -139,21 +139,33 @@
         </TableRow>
     </TableLayout>
 
-    <ImageView
+    <TextView
         android:layout_width="@dimen/Ancho_Tiempo"
         android:layout_height="@dimen/Alto_Tiempo"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/tiempo"
+        android:background="@drawable/tiempo"
         android:scaleType="fitXY"
-        android:contentDescription="@string/IVdescripcion" />
+        android:text="0:00"
+        android:gravity="end"
+        android:paddingTop="@dimen/padding_top_tmp"
+        android:paddingEnd="@dimen/padding_start_tmp"
+        android:textSize="@dimen/tamanho_tmp"
+        android:contentDescription="@string/IVdescripcion"
+        android:textColor="@android:color/white"
+        android:id="@+id/TVtimer" />
 
-    <ImageView
+    <TextView
         android:layout_width="@dimen/Tamanho_Puntos"
         android:layout_height="@dimen/Tamanho_Puntos"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/puntos"
+        android:gravity="center"
+        android:background="@drawable/puntos"
         android:scaleType="fitCenter"
-        android:contentDescription="@string/IVdescripcion" />
+        android:contentDescription="@string/IVdescripcion"
+        android:text="0 pts"
+        android:textSize="@dimen/tamanho_pts"
+        android:textColor="@android:color/white"
+        android:id="@+id/TVpts" />
 
 </RelativeLayout>

@@ -1,6 +1,9 @@
 package com.example.joaquin.triviagranja.victor;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +24,6 @@ import java.util.Random;
 public class TriviaActivity extends AppCompatActivity {
 
     boolean flag=true;
-    boolean flag2 = true;
     Categoria categorias[] = new Categoria[3];
     Pregunta preguntas[] = new Pregunta[9];
     Respuesta respuestas[] = new Respuesta[4];
@@ -30,38 +32,53 @@ public class TriviaActivity extends AppCompatActivity {
     boolean touch_active = true;
     int numPregunta = 9;
     int numCategorias = 3;
+    int puntos = 0;
 
+    CountDownTimer eltime;
+    int limitetiempo = 150 * 1000;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        System.out.println("vergas todo de nuevo");
         //recuperar
-        if(flag2) {
-            System.out.println("paso por on create flag");
-            flag2 = false;
-            recuperar_info();
-            //prueba Crear Cuatros respuestas
-            Respuesta r;
-            r = new Respuesta("Cierto", 1, new Long("-1"), new Long("1"));
-            respuestas[0] = r;
-            r = new Respuesta("Falso", 0, new Long("-1"), new Long("1"));
-            respuestas[1] = r;
-            r = new Respuesta("El puente está hecho con árboles del bosque", 0, new Long("-1"), new Long("1"));
-            respuestas[2] = r;
-            r = new Respuesta("Ninguna es Correcta", 0, new Long("-1"), new Long("1"));
-            respuestas[3] = r;
+        recuperar_info();
+        colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
+        colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
+        colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
+        colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
 
-            colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
-            colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
-            colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
-            colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
+        colocarFonts();
 
-            iniciar();
-        }else {
-            System.out.println("paso por on create else");
-        }
+        iniciar();
+        eltime = new CountDownTimer(limitetiempo, 1000) {
+            TextView tvtime = (TextView)findViewById(R.id.TVtimer);
+
+            public void onTick(long millisUntilFinished) {
+                String texto = "";
+                long mili = millisUntilFinished / 1000;
+                int minutos = (int)mili / 60;
+                int segundos = (int)mili - (minutos * 60);
+                if(minutos > 0){
+                    texto += String.valueOf(minutos) + " : ";
+                    if(segundos < 10)
+                        texto += "0";
+                }else
+                {
+                    if(segundos < 10)
+                        tvtime.setTextColor(Color.RED);
+                }
+                texto += String.valueOf(segundos);
+
+                tvtime.setText(texto);
+            }
+
+            public void onFinish() {
+                tvtime.setText("done!");
+                touch_active = false;
+                //pasar a la siguiente actividad
+            }
+        }.start();
     }
 
     @Override
@@ -149,6 +166,7 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void iniciar()
     {
+        //escribir puntos
         numPregunta--;
         if(numPregunta >= 0) {
             if(flag) {
@@ -207,6 +225,7 @@ public class TriviaActivity extends AppCompatActivity {
         {
             //pasar al activity de respuestas
             System.out.println("fin");
+            eltime.cancel();
         }
     }
 
@@ -263,10 +282,16 @@ public class TriviaActivity extends AppCompatActivity {
         papadeo.reset();
         ImageView ivs;
         ivs = (ImageView)findViewById(IVid);
-        if(respuestas[Rnum].isCorrecta() == 1)
+        if(respuestas[Rnum].isCorrecta() == 1) {
             ivs.setImageResource(R.drawable.correcta);
-        else
+            //sumar puntos
+            puntos = puntos + pregunta.getPuntos();
+            TextView tvpts = (TextView)findViewById(R.id.TVpts);
+            tvpts.setText(String.valueOf(puntos) + " pts");
+        }
+        else {
             ivs.setImageResource(R.drawable.incorrecta);
+        }
         tvs.clearAnimation();
         tvs.startAnimation(papadeo);
 
@@ -361,5 +386,39 @@ public class TriviaActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        //nada
+    }
 
+    private void colocarFonts()
+    {
+        TextView tv;
+        Typeface TF;
+
+        TF = Typeface.createFromAsset(getAssets(),"font/titulos.otf");
+        tv = (TextView)findViewById(R.id.TVtextoPregunta);
+        tv.setTypeface(TF);
+
+        TF = Typeface.createFromAsset(getAssets(),"font/puntosynumeros.ttf");
+        tv = (TextView)findViewById(R.id.TVpts);
+        tv.setTypeface(TF);
+        tv = (TextView)findViewById(R.id.TVtimer);
+        tv.setTypeface(TF);
+
+        TF = Typeface.createFromAsset(getAssets(),"font/puntosynumeros.ttf");
+        tv = (TextView)findViewById(R.id.TVrespuesta1);
+        tv.setTypeface(TF);
+        tv.setTextColor(Color.rgb(77,41,3));
+        tv = (TextView)findViewById(R.id.TVrespuesta2);
+        tv.setTypeface(TF);
+        tv.setTextColor(Color.rgb(77,41,3));
+        tv = (TextView)findViewById(R.id.TVrespuesta3);
+        tv.setTypeface(TF);
+        tv.setTextColor(Color.rgb(77,41,3));
+        tv = (TextView)findViewById(R.id.TVrespuesta4);
+        tv.setTypeface(TF);
+        tv.setTextColor(Color.rgb(77,41,3));
+    }
 }

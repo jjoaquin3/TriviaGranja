@@ -34,7 +34,7 @@
     <dimen name="attConfM">40sp</dimen>-->
 
     <!-- dimensiones Activity Trivia -->
-<!--    <dimen name="Margen_Top_Checks_Respuestas">350dp</dimen>
+    <!--<dimen name="Margen_Top_Checks_Respuestas">350dp</dimen>
     <dimen name="Margen_Entre_Checks_Respuestas">20dp</dimen>
     <dimen name="Margen_Entre_Respuestas">15dp</dimen>
     <dimen name="Text_Size_Preguntas">70sp</dimen>
@@ -48,9 +48,13 @@
     <dimen name="Alto_Titulo">400dp</dimen>
     <dimen name="Ancho_Tiempo">500dp</dimen>
     <dimen name="Alto_Tiempo">300dp</dimen>
-    <dimen name="Tamanho_Puntos">325dp</dimen>-->
+    <dimen name="Tamanho_Puntos">325dp</dimen>
+    <dimen name="tamanho_pts">65sp</dimen>
+    <dimen name="tamanho_tmp">90sp</dimen>
+    <dimen name="padding_top_tmp">65dp</dimen>
+    <dimen name="padding_start_tmp">75dp</dimen>-->
 
-    <!-- dimensiones Activity Trivia Preubas-->
+    <!-- dimensiones Activity Trivia Pruebas-->
         <dimen name="Margen_Top_Checks_Respuestas">80dp</dimen>
         <dimen name="Margen_Entre_Checks_Respuestas">10dp</dimen>
         <dimen name="Margen_Entre_Respuestas">10dp</dimen>
@@ -66,10 +70,15 @@
         <dimen name="Ancho_Tiempo">150dp</dimen>
         <dimen name="Alto_Tiempo">75dp</dimen>
         <dimen name="Tamanho_Puntos">75dp</dimen>
+        <dimen name="tamanho_pts">15sp</dimen>
+        <dimen name="tamanho_tmp">25sp</dimen>
+        <dimen name="padding_top_tmp">15dp</dimen>
+        <dimen name="padding_start_tmp">30dp</dimen>
+
 
 
     <!-- dimensiones 10 Activity Trivia Preubas-->
-    <!--<dimen name="Margen_Top_Checks_Respuestas">200dp</dimen>
+<!--    <dimen name="Margen_Top_Checks_Respuestas">200dp</dimen>
     <dimen name="Margen_Entre_Checks_Respuestas">20dp</dimen>
     <dimen name="Margen_Entre_Respuestas">20dp</dimen>
     <dimen name="Text_Size_Preguntas">40sp</dimen>
@@ -83,6 +92,10 @@
     <dimen name="Alto_Titulo">175dp</dimen>
     <dimen name="Ancho_Tiempo">300dp</dimen>
     <dimen name="Alto_Tiempo">175dp</dimen>
-    <dimen name="Tamanho_Puntos">175dp</dimen>-->
+    <dimen name="Tamanho_Puntos">200dp</dimen>
+    <dimen name="tamanho_pts">40sp</dimen>
+    <dimen name="tamanho_tmp">50sp</dimen>
+    <dimen name="padding_top_tmp">40dp</dimen>
+    <dimen name="padding_start_tmp">50dp</dimen>-->
 
 </resources>

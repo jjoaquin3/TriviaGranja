@@ -1,5 +1,6 @@
 package com.example.joaquin.triviagranja.victor;
 
+import com.example.joaquin.triviagranja.jordy.resultados;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -36,21 +37,17 @@ public class TriviaActivity extends AppCompatActivity {
     int puntos = 0;
 
     CountDownTimer eltime;
-    int limitetiempo = 150 * 1000;
+    int limitetiempo = 151 * 1000;//cambiar a 2:30
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
         //recuperar categorias
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         for (int x = 0; x < categorias.length ; x++) {
             categorias[x] = modelo.getCategoria(intent.getStringExtra("categoria"+(x+1)));
         }
-
-/*        for (int x = 0; x < categorias.length ; x++) {
-            categorias[x] = modelo.getCategoria("categoria"+(x+1));
-        }*/
 
         recuperar_info();
         colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
@@ -84,11 +81,17 @@ public class TriviaActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                tvtime.setText("done!");
+                tvtime.setText("Fin!");
                 touch_active = false;
-                //pasar a la siguiente actividad
+                finAct();
             }
         }.start();
+    }
+    private void finAct(){
+        Intent resumen  = new Intent(this, resultados.class);
+        resumen.putExtra("totalp", puntos);
+        startActivity(resumen);
+        this.finish();
     }
 
     @Override
@@ -230,6 +233,8 @@ public class TriviaActivity extends AppCompatActivity {
             //pasar al activity de respuestas
             System.out.println("fin");
             eltime.cancel();
+
+            finAct();
         }
     }
 

@@ -10,8 +10,12 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.example.joaquin.triviagranja.R;
 import com.example.joaquin.triviagranja.jordy.menu;
+import com.example.joaquin.triviagranja.victor.Categoria;
+import com.example.joaquin.triviagranja.victor.TriviaActivity;
 
 public class conteo extends AppCompatActivity {
 
@@ -20,12 +24,15 @@ public class conteo extends AppCompatActivity {
     private final int conteo_duracion_img = 750;
     private final int conteo_duracion_desvanecer = 250;
     private int conteo = 3;
+    Categoria categorias[] = new Categoria[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conteo);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+
 
         image = (ImageView)findViewById(R.id.imageView_conteo_numeros);
 
@@ -101,10 +108,16 @@ public class conteo extends AppCompatActivity {
 
     private void finConteo()
     {
-        System.out.println("\n-------> Se termino el conteo");
-        System.out.println("-------> ¿Qué Hago?\n");
-        Intent pantalla_menu  = new Intent(this, menu.class);
-        startActivity(pantalla_menu);
-        this.finish();
+        Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            Toast.makeText(getApplicationContext(), ":(", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent inicio  = new Intent(this, TriviaActivity.class);
+            inicio.putExtra("categoria1", extras.getString("categoria1"));
+            inicio.putExtra("categoria2", extras.getString("categoria2"));
+            inicio.putExtra("categoria3", extras.getString("categoria3"));
+            startActivity(inicio);
+            this.finish();
+        }
     }
 }

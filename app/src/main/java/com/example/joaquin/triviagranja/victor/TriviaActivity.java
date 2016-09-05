@@ -390,11 +390,11 @@ public class TriviaActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+   /* @Override
     public void onBackPressed()
     {
         //nada
-    }
+    }*/
 
     private void colocarFonts()
     {

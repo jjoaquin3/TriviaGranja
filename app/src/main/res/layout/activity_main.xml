@@ -83,4 +83,16 @@
 
     </FrameLayout>
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton_config"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/IVdescripcion"
+        android:src="@android:drawable/ic_dialog_dialer"
+        android:onClick="btnCfg"
+        android:layout_weight="1"
+        android:layout_gravity="bottom|right" />
+
 </RelativeLayout>

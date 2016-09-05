@@ -1,5 +1,6 @@
 package com.example.joaquin.triviagranja.jose;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import com.example.joaquin.triviagranja.R;
+import com.example.joaquin.triviagranja.jordy.menu;
 
 public class conteo extends AppCompatActivity {
 
@@ -82,6 +84,8 @@ public class conteo extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 if(conteo > 0 )
                     image.startAnimation(fadeIn);
+                else
+                    finConteo();
             }
 
             @Override
@@ -92,6 +96,15 @@ public class conteo extends AppCompatActivity {
 
     public void conteo_btnAtras(View v)
     {
+        this.finish();
+    }
+
+    private void finConteo()
+    {
+        System.out.println("\n-------> Se termino el conteo");
+        System.out.println("-------> ¿Qué Hago?\n");
+        Intent pantalla_menu  = new Intent(this, menu.class);
+        startActivity(pantalla_menu);
         this.finish();
     }
 }

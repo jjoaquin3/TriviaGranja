@@ -5,8 +5,6 @@ import com.example.joaquin.triviagranja.victor.Categoria;
 import com.example.joaquin.triviagranja.victor.ListaCategoriaActivity;
 import com.example.joaquin.triviagranja.victor.TriviaActivity;
 import com.example.joaquin.triviagranja.victor.Modelo;
-
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -37,16 +35,25 @@ public class MainActivity extends AppCompatActivity {
         modelo.destruir();
     }
 
-    public void main_pantalla2(View v)
+    public void main_btnPlay(View v)
     {
-        Intent p2 = new Intent(this, menu.class);
-        startActivity(p2);
+        System.out.println("----------> Acción del boton Play - Main");
+        Intent pantalla_menu  = new Intent(this, menu.class);
+        startActivity(pantalla_menu);
     }
 
-    public void main_pantalla3(View v)
+    public void main_btnDemo(View v)
     {
-        Intent p3 = new Intent(this, conteo.class);
-        startActivity(p3);
+        System.out.println("----------> Acción del boton Demo - Main");
+        Intent pantalla_conteo = new Intent(this, conteo.class);
+        startActivity(pantalla_conteo);
+    }
+
+    public void main_btnVideo(View v)
+    {
+        System.out.println("----------> Acción del boton Video - Main");
+        Intent pantalla_conteo = new Intent(this, conteo.class);
+        startActivity(pantalla_conteo);
     }
 
     //acción btn configuración

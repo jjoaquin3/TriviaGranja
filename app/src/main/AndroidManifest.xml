@@ -17,7 +17,7 @@
         </activity>
 
         <activity android:name=".jordy.menu" />
-        <activity android:name=".jose.conteo" />
+        <activity android:name=".jose.conteo" android:screenOrientation="landscape" />
         <activity android:name=".victor.ListaCategoriaActivity" />
         <activity android:name=".victor.ListaPreguntaActivity" />
         <activity android:name=".victor.ListaRespuestaActivity" />

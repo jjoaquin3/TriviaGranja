@@ -28,7 +28,7 @@
                 android:id="@+id/imageView_main_logo"
                 android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/main_logo"
-                android:background="@drawable/main_logo2" />
+                android:background="@drawable/main_logo" />
         </LinearLayout>
 
         <LinearLayout
@@ -42,27 +42,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_main_play"
-                android:background="@drawable/main_play2"
                 android:layout_gravity="top"
-                android:onClick="main_pantalla2" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="150dp"
-            android:baselineAligned="false"
-            android:layout_gravity="bottom|right"
-            android:id="@+id/LinearLayout_main_demo"
-            android:paddingBottom="30dp">
+                android:background="@drawable/main_play_efecto"
+                android:onClick="main_btnPlay" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_main_demo"
-                android:layout_gravity="left"
-                android:background="@drawable/main_demo"
-                android:onClick="main_pantalla3" />
+                android:background="@drawable/main_demo_efecto"
+                android:onClick="main_btnDemo" />
+
         </LinearLayout>
 
         <FrameLayout
@@ -74,11 +64,10 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left|bottom"
                 android:id="@+id/button_main_video"
-                android:clickable="true"
-                android:background="@drawable/main_video"
-                android:onClick="main_pantalla3" />
+                android:background="@drawable/main_video_efecto"
+                android:clickable="false"
+                android:onClick="main_btnVideo" />
         </FrameLayout>
 
     </FrameLayout>
@@ -89,7 +78,6 @@
         android:id="@+id/imageButton_config"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/IVdescripcion"
         android:src="@android:drawable/ic_dialog_dialer"
         android:onClick="btnCfg"
         android:layout_weight="1"

@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".jordy.menu" />
-        <activity android:name=".jose.conteo" />
+        <activity
+            android:name=".jose.conteo"
+            android:screenOrientation="landscape" />
         <activity android:name=".victor.ListaCategoriaActivity" />
         <activity android:name=".victor.ListaPreguntaActivity" />
         <activity android:name=".victor.ListaRespuestaActivity" />
@@ -30,6 +32,7 @@
             android:screenOrientation="landscape" />
         <activity android:name=".victor.confActivity" />
         <activity android:name=".victor.UsuarioActivity"></activity>
+        <activity android:name=".jordy.resultados" />
     </application>
 
 </manifest>

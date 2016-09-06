@@ -116,6 +116,8 @@ public class conteo extends AppCompatActivity {
             inicio.putExtra("categoria1", extras.getString("categoria1"));
             inicio.putExtra("categoria2", extras.getString("categoria2"));
             inicio.putExtra("categoria3", extras.getString("categoria3"));
+            int d = 0;
+            inicio.putExtra("demo",d);
             startActivity(inicio);
             this.finish();
         }

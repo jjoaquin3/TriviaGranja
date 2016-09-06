@@ -1,5 +1,6 @@
 package com.example.joaquin.triviagranja.victor;
 
+import com.example.joaquin.triviagranja.jordy.resultados;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -98,9 +99,9 @@ public class TriviaActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    tvtime.setText("done!");
+                    tvtime.setText("Fin!");
                     touch_active = false;
-                    //pasar a la siguiente actividad y pasar los puntos
+                    finAct();
                 }
             }.start();
         }
@@ -127,6 +128,13 @@ public class TriviaActivity extends AppCompatActivity {
         String kktiempo = "0";
         kktiempo = modelo.getTmp();
         limitetiempo = Integer.valueOf(kktiempo) * 1000;
+    }
+
+    private void finAct(){
+        Intent resumen  = new Intent(this, resultados.class);
+        resumen.putExtra("totalp", puntos);
+        startActivity(resumen);
+        this.finish();
     }
 
     private void recuperar_info()
@@ -267,6 +275,7 @@ public class TriviaActivity extends AppCompatActivity {
             else {
                 //pasar al activity de respuestas
                 eltime.cancel();
+                finAct();
             }
         }
     }

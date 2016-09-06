@@ -15,7 +15,6 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,8 +30,10 @@
             android:name=".victor.TriviaActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".victor.confActivity" />
-        <activity android:name=".victor.UsuarioActivity"></activity>
+        <activity android:name=".victor.UsuarioActivity" />
         <activity android:name=".jordy.resultados" />
+        <activity android:name=".jose.video" />
+        <activity android:name=".jose.video2"></activity>
     </application>
 
 </manifest>

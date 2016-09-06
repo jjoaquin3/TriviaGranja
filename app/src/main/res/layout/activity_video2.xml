@@ -20,4 +20,5 @@
         android:background="@android:color/transparent"
         android:id="@+id/button_touch"
         android:onClick="video2_btnTouch" />
+
 </RelativeLayout>

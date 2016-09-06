@@ -3,6 +3,7 @@ package com.example.joaquin.triviagranja;
 import com.example.joaquin.triviagranja.jordy.menu;
 import com.example.joaquin.triviagranja.jose.conteo;
 import com.example.joaquin.triviagranja.jose.video;
+import com.example.joaquin.triviagranja.jose.video2;
 import com.example.joaquin.triviagranja.victor.Categoria;
 import com.example.joaquin.triviagranja.victor.ListaCategoriaActivity;
 import com.example.joaquin.triviagranja.victor.Modelo;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void main_btnVideo(View v)
     {
         System.out.println("----------> Acción del boton Video - Main");
+        //Intent pantalla_video = new Intent(this, video2.class);
         Intent pantalla_video = new Intent(this, video.class);
         startActivity(pantalla_video);
     }

@@ -28,7 +28,7 @@
                 android:id="@+id/imageView_main_logo"
                 android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/main_logo"
-                android:background="@drawable/main_logo" />
+                android:background="@drawable/main_logo"/>
         </LinearLayout>
 
         <LinearLayout

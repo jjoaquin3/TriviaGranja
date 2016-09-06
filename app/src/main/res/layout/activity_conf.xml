@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.joaquin.triviagranja.victor.confActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:weightSum="1" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="cursive"
+                    android:text="@string/LBnuevaPass"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/ATTconfiguracion"
+                    />
+
+                <EditText
+                    android:layout_width="@dimen/confPET"
+                    android:layout_height="@dimen/attConfM"
+                    android:inputType="textPassword"
+                    android:ems="5"
+                    android:id="@+id/ETnuevaPass"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/holo_orange_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="cursive"
+                    android:text="@string/LBviejaPass"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/ATTconfiguracion"
+                    android:layout_marginTop="@dimen/Margenbetween"/>
+
+                <EditText
+                    android:layout_width="@dimen/confPET"
+                    android:layout_height="@dimen/attConfM"
+                    android:inputType="textPassword"
+                    android:ems="5"
+                    android:id="@+id/EToldPass"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/holo_orange_light"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar contraseña"
+                    android:id="@+id/BTcambiopass"
+                    android:textAppearance="@style/applyText"
+                    android:textSize="@dimen/ATTconf"
+                    android:layout_gravity="center_horizontal"
+                    android:nestedScrollingEnabled="false"
+                    android:onClick="BTp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exportar Datos"
+                    android:id="@+id/BTexdatos"
+                    android:textAppearance="@style/applyText"
+                    android:textSize="@dimen/ATTconf"
+                    android:layout_gravity="center"
+                    android:onClick="BTex" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Importar Datos"
+                    android:id="@+id/BTimdatos"
+                    android:textAppearance="@style/applyText"
+                    android:textSize="@dimen/ATTconf"
+                    android:layout_gravity="center"
+                    android:onClick="BTim" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:weightSum="1"
+            android:layout_marginTop="@dimen/Margenbetween">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar Preguntas"
+                    android:id="@+id/BTch"
+                    android:textAppearance="@style/applyText"
+                    android:textSize="@dimen/ATTconfiguracion"
+                    android:layout_gravity="center"
+                    android:onClick="BTch" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="cursive"
+                    android:text="@string/LBvideo"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/ATTconfiguracion"
+                    />
+
+                <EditText
+                    android:layout_width="@dimen/confPET"
+                    android:layout_height="@dimen/attConfM"
+                    android:inputType="textPersonName"
+                    android:ems="5"
+                    android:id="@+id/ETvideo"
+                    android:layout_gravity="center"
+                    android:background="@android:color/holo_orange_light" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar Video"
+                    android:id="@+id/button"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="BTv"
+                    android:textSize="@dimen/ATTconf"
+                    android:textAppearance="@style/applyText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="cursive"
+                    android:text="@string/LBtmp"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/ATTconfiguracion"
+                    android:layout_marginTop="@dimen/Margenbetween" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1" >
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/ATTconf"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/spinner" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold|italic"
+                        android:fontFamily="cursive"
+                        android:text="@string/LBmin"
+                        android:textSize="@dimen/ATTconfiguracion"
+                        android:layout_marginStart="@dimen/Margenbetween"
+                        />
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/ATTconf"
+                        android:id="@+id/spinner2"
+                        android:layout_marginStart="@dimen/Margenbetween" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold|italic"
+                        android:fontFamily="cursive"
+                        android:text="@string/LBseg"
+                        android:textSize="@dimen/ATTconfiguracion"
+                        android:layout_marginStart="@dimen/Margenbetween"
+                        />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar Tiempo de Juego"
+                    android:id="@+id/BTjuego"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="@style/applyText"
+                    android:textSize="@dimen/ATTconf"
+                    android:onClick="BTt" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+

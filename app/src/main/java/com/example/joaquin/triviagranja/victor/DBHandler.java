@@ -35,6 +35,13 @@ public class DBHandler extends SQLiteOpenHelper {
             "audio TEXT " +
             ")";
 
+    String create_conf = "CREATE TABLE conf " +
+            "(" +
+            "pass TEXT NOT NULL, " +
+            "video TEXT, " +
+            "tiempo INT NOT NULL " +
+            ")";
+
     public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -44,16 +51,19 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(create_categoria);
         db.execSQL(create_pregunta);
         db.execSQL(create_respuesta);
+        db.execSQL(create_conf);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS categoria");
+        /*db.execSQL("DROP TABLE IF EXISTS categoria");
         db.execSQL("DROP TABLE IF EXISTS pregunta");
         db.execSQL("DROP TABLE IF EXISTS respuesta");
+        db.execSQL("DROP TABLE IF EXISTS conf");
 
         db.execSQL(create_categoria);
         db.execSQL(create_pregunta);
         db.execSQL(create_respuesta);
+        db.execSQL(create_conf);*/
     }
 }

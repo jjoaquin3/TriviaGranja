@@ -1,10 +1,10 @@
 package com.example.joaquin.triviagranja;
+
 import com.example.joaquin.triviagranja.jordy.menu;
 import com.example.joaquin.triviagranja.jose.conteo;
 import com.example.joaquin.triviagranja.jose.video;
 import com.example.joaquin.triviagranja.victor.Categoria;
 import com.example.joaquin.triviagranja.victor.ListaCategoriaActivity;
-import com.example.joaquin.triviagranja.victor.TriviaActivity;
 import com.example.joaquin.triviagranja.victor.Modelo;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;

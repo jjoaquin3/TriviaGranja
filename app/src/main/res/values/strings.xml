@@ -23,9 +23,14 @@
     <string name="LBimagen">Imagen*</string>
     <string name="LBnuevaPass">Contraseña nueva</string>
     <string name="LBviejaPass">Contraseña anterior</string>
+    <string name="LBvideo">Nombre del Video</string>
+    <string name="LBtmp">Tiempo de Juego</string>
+    <string name="LBmin">minutos</string>
+    <string name="LBseg">segundos</string>
 
     <!-- Buttons Configuración -->
     <string name="BTapply">Apply</string>
-    <string name="title_activity_video2">video2</string>
-
+    <string name="title_activity_resultados">resultados</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

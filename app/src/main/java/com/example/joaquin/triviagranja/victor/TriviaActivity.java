@@ -472,4 +472,10 @@ public class TriviaActivity extends AppCompatActivity {
         tv.setTypeface(TF);
         tv.setTextColor(Color.rgb(77,41,3));
     }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
+    }
+
 }

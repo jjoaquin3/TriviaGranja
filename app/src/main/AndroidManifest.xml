@@ -32,8 +32,8 @@
         <activity android:name=".victor.confActivity" />
         <activity android:name=".victor.UsuarioActivity" />
         <activity android:name=".jordy.resultados" />
-        <activity android:name=".jose.video" />
-        <activity android:name=".jose.video2"></activity>
+        <activity android:name=".jose.video2"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

@@ -87,7 +87,10 @@ public class resultados extends FragmentActivity {
     }
 
 
-
+    @Override
+    public void onBackPressed() {
+        this.finish();
+    }
 
     public static class resumen_punteo extends Fragment {
 

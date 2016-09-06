@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.joaquin.triviagranja.MainActivity;
 import com.example.joaquin.triviagranja.R;
 import com.example.joaquin.triviagranja.jordy.menu;
 import com.example.joaquin.triviagranja.victor.Categoria;
@@ -21,10 +23,11 @@ public class conteo extends AppCompatActivity {
 
     ImageView image;
     private AlphaAnimation fadeIn, fadeOut;
-    private final int conteo_duracion_img = 750;
-    private final int conteo_duracion_desvanecer = 250;
+    private final int conteo_duracion_img = 450;//750
+    private final int conteo_duracion_desvanecer = 150;//250
     private int conteo = 3;
     Categoria categorias[] = new Categoria[3];
+    private MediaPlayer fondo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +35,16 @@ public class conteo extends AppCompatActivity {
         setContentView(R.layout.activity_conteo);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-
-
         image = (ImageView)findViewById(R.id.imageView_conteo_numeros);
 
         this.efectosStart();
         this.efectosEnd();
 
         image.startAnimation(fadeIn);
+
+        MainActivity.fondo.pause();
+        fondo=MediaPlayer.create(conteo.this,R.raw.rsg);
+        fondo.start();
     }
 
     private void efectosStart()
@@ -118,8 +123,14 @@ public class conteo extends AppCompatActivity {
             inicio.putExtra("categoria3", extras.getString("categoria3"));
             int d = 0;
             inicio.putExtra("demo",d);
+
+            MainActivity.fondo.start();
             startActivity(inicio);
             this.finish();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        this.finish();
     }
 }

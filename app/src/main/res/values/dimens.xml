@@ -28,6 +28,7 @@
     <!-- pantalla 10 configuracion-->
     <dimen name="TTconfiguracion">45sp</dimen>
     <dimen name="ATTconfiguracion">45sp</dimen>
+    <dimen name="ATTconfiguracion2">35sp</dimen>
     <dimen name="Margenconfiguracion">10dp</dimen>
     <dimen name="Margenbetween">15dp</dimen>
     <dimen name="attConfM">40sp</dimen>

@@ -37,7 +37,7 @@
                     android:fontFamily="cursive"
                     android:text="@string/LBnuevaPass"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/ATTconfiguracion"
+                    android:textSize="@dimen/ATTconfiguracion2"
                     />
 
                 <EditText
@@ -56,7 +56,7 @@
                     android:fontFamily="cursive"
                     android:text="@string/LBviejaPass"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/ATTconfiguracion"
+                    android:textSize="@dimen/ATTconfiguracion2"
                     android:layout_marginTop="@dimen/Margenbetween"/>
 
                 <EditText
@@ -132,7 +132,7 @@
                     android:text="Modificar Preguntas"
                     android:id="@+id/BTch"
                     android:textAppearance="@style/applyText"
-                    android:textSize="@dimen/ATTconfiguracion"
+                    android:textSize="@dimen/ATTconfiguracion2"
                     android:layout_gravity="center"
                     android:onClick="BTch" />
 
@@ -151,7 +151,7 @@
                     android:fontFamily="cursive"
                     android:text="@string/LBvideo"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/ATTconfiguracion"
+                    android:textSize="@dimen/ATTconfiguracion2"
                     />
 
                 <EditText
@@ -180,7 +180,7 @@
                     android:fontFamily="cursive"
                     android:text="@string/LBtmp"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/ATTconfiguracion"
+                    android:textSize="@dimen/ATTconfiguracion2"
                     android:layout_marginTop="@dimen/Margenbetween" />
 
                 <LinearLayout
@@ -201,7 +201,7 @@
                         android:textStyle="bold|italic"
                         android:fontFamily="cursive"
                         android:text="@string/LBmin"
-                        android:textSize="@dimen/ATTconfiguracion"
+                        android:textSize="@dimen/ATTconfiguracion2"
                         android:layout_marginStart="@dimen/Margenbetween"
                         />
 
@@ -217,7 +217,7 @@
                         android:textStyle="bold|italic"
                         android:fontFamily="cursive"
                         android:text="@string/LBseg"
-                        android:textSize="@dimen/ATTconfiguracion"
+                        android:textSize="@dimen/ATTconfiguracion2"
                         android:layout_marginStart="@dimen/Margenbetween"
                         />
 

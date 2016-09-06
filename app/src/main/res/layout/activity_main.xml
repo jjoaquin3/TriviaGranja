@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
-            android:id="@+id/LinearLayout_main_play">
+            android:id="@+id/LinearLayout_main_play"
+            android:layout_marginLeft="100dp">
 
             <Button
                 android:layout_width="wrap_content"
@@ -47,8 +48,8 @@
                 android:onClick="main_btnPlay" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:id="@+id/button_main_demo"
                 android:background="@drawable/main_demo_efecto"
                 android:onClick="main_btnDemo" />

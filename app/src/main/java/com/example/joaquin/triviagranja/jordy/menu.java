@@ -141,6 +141,10 @@ public class menu extends AppCompatActivity {
         bloquear = (Button)findViewById(R.id.btn_menu_santo_domingo);
         bloquear.setEnabled(false);
     }
+    @Override
+    public void onBackPressed() {
+        this.finish();
+    }
 
 }
 

@@ -26,5 +26,6 @@
 
     <!-- Buttons Configuración -->
     <string name="BTapply">Apply</string>
+    <string name="title_activity_video2">video2</string>
 
 </resources>

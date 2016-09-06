@@ -1,6 +1,7 @@
 package com.example.joaquin.triviagranja;
 import com.example.joaquin.triviagranja.jordy.menu;
 import com.example.joaquin.triviagranja.jose.conteo;
+import com.example.joaquin.triviagranja.jose.video;
 import com.example.joaquin.triviagranja.victor.Categoria;
 import com.example.joaquin.triviagranja.victor.ListaCategoriaActivity;
 import com.example.joaquin.triviagranja.victor.TriviaActivity;
@@ -52,15 +53,14 @@ public class MainActivity extends AppCompatActivity {
     public void main_btnVideo(View v)
     {
         System.out.println("----------> Acción del boton Video - Main");
-        Intent pantalla_conteo = new Intent(this, conteo.class);
-        startActivity(pantalla_conteo);
+        Intent pantalla_video = new Intent(this, video.class);
+        startActivity(pantalla_video);
     }
 
     //acción btn configuración
     public void btnCfg(View v) {
         Intent confIntent = new Intent(this, ListaCategoriaActivity.class);
         startActivity(confIntent);
-
     }
 
 }

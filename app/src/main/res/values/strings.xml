@@ -23,6 +23,10 @@
     <string name="LBimagen">Imagen*</string>
     <string name="LBnuevaPass">Contraseña nueva</string>
     <string name="LBviejaPass">Contraseña anterior</string>
+    <string name="LBvideo">Nombre del Video</string>
+    <string name="LBtmp">Tiempo de Juego</string>
+    <string name="LBmin">minutos</string>
+    <string name="LBseg">segundos</string>
 
     <!-- Buttons Configuración -->
     <string name="BTapply">Apply</string>

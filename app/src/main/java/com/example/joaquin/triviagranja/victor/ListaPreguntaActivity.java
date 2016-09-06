@@ -63,8 +63,8 @@ public class ListaPreguntaActivity extends AppCompatActivity {
             et = (EditText) findViewById(R.id.ETnombreCategoria);
             et.setText("" + cat_actual.getNombre());
             //imagen Menu
-            et = (EditText) findViewById(R.id.ETimagenCategoria);
-            et.setText("" + cat_actual.getImgp());
+            /*et = (EditText) findViewById(R.id.ETimagenCategoria);
+            et.setText("" + cat_actual.getImgp());*/
         }
     }
 
@@ -106,11 +106,11 @@ public class ListaPreguntaActivity extends AppCompatActivity {
 
             et = (EditText) findViewById(R.id.ETnombreCategoria);
             n = et.getText().toString();
-            et = (EditText) findViewById(R.id.ETimagenCategoria);
-            ip = et.getText().toString();
+           /* et = (EditText) findViewById(R.id.ETimagenCategoria);
+            ip = et.getText().toString();*/
 
             if(!n.equals("")) {
-                Categoria nv = new Categoria(n, "", "", ip, "", cat_actual.getRowid());
+                Categoria nv = new Categoria(n, "", "", "", "", cat_actual.getRowid());
                 md.updateCategoria(nv);
                 //Toast.makeText(this, "Las modificaciones han sido correctas", Toast.LENGTH_SHORT).show();
                 this.finish();

@@ -37,107 +37,23 @@
             android:layout_weight="0.9" >
 
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="1"
-                android:baselineAligned="false">
+                android:id="@+id/scrollViewListaCategorias"
+                android:layout_gravity="center_horizontal"
+                android:fillViewport="false">
 
                 <LinearLayout
+                    android:id="@+id/layoutCategorias"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold|italic"
-                        android:fontFamily="cursive"
-                        android:text="@string/LBnuevaPass"
-                        android:gravity="start"
-                        android:textSize="@dimen/ATTconfiguracion"
-                        />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/attConfM"
-                        android:inputType="textPassword"
-                        android:ems="5"
-                        android:id="@+id/ETnuevaPass"
-                        android:layout_weight="1"
-                        android:background="@android:color/holo_orange_light"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold|italic"
-                        android:fontFamily="cursive"
-                        android:text="@string/LBviejaPass"
-                        android:gravity="start"
-                        android:textSize="@dimen/ATTconfiguracion"
-                        android:layout_marginTop="@dimen/Margenbetween"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/attConfM"
-                        android:inputType="textPassword"
-                        android:ems="5"
-                        android:id="@+id/EToldPass"
-                        android:layout_weight="1"
-                        android:background="@android:color/holo_orange_light"
-                        />
-
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
                 </LinearLayout>
+            </ScrollView>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:layout_marginStart="@dimen/Margenbetween" >
-
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/scrollViewListaCategorias"
-                        android:layout_gravity="center_horizontal"
-                        android:fillViewport="false">
-
-                        <LinearLayout
-                            android:id="@+id/layoutCategorias"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
-                        </LinearLayout>
-                    </ScrollView>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:gravity="end"
-            android:layout_weight="0.05"
-            >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/BTapply"
-                android:id="@+id/BTpass"
-                android:layout_weight="0.25"
-                android:layout_gravity="start"
-                android:textAppearance="@style/applyText"
-                android:textSize="@dimen/ATTconfiguracion"
-                />
-
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

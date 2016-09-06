@@ -421,4 +421,108 @@ public class Modelo {
         }
         return respuesta;
     }
+
+
+    //------------------- pass
+
+    public void inicializarpass() {
+        try {
+            SQLiteDatabase db;
+            db = manejador.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put( "pass" ,  "");
+            contentValues.put( "video" ,  "");
+            contentValues.put( "tiempo" ,  "150");
+            db.insert("conf", null, contentValues);
+            db.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean getPass(String pass)
+    {
+        boolean respuesta = false;
+        String rt = null;
+        try {
+            SQLiteDatabase db;
+            db = manejador.getReadableDatabase();
+            Cursor crs = db.query(true,"conf",new String[] { "pass" }, null, null, null, null, null, null);
+            if(crs != null)
+            {
+                crs.moveToFirst();
+                rt = crs.getString(0);
+            }
+            crs.close();
+            db.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        if(rt.equals(pass))
+        {
+            respuesta = true;
+        }
+        return respuesta;
+    }
+
+    public void setPass(String pass)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put( "pass" ,  pass);
+        modificar("conf",contentValues,null, null);
+    }
+
+    public String getTmp()
+    {
+        String respuesta = "0";
+        try {
+            SQLiteDatabase db;
+            db = manejador.getReadableDatabase();
+            Cursor crs = db.query(true,"conf",new String[] { "tiempo" }, null, null, null, null, null, null);
+            if(crs != null)
+            {
+                crs.moveToFirst();
+                respuesta = crs.getString(0);
+            }
+            crs.close();
+            db.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
+    public void setTmp(String tmp)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put( "tiempo" ,  tmp);
+        modificar("conf",contentValues,null, null);
+    }
+
+    public String getVideo()
+    {
+        String respuesta = "";
+        try {
+            SQLiteDatabase db;
+            db = manejador.getReadableDatabase();
+            Cursor crs = db.query(true,"conf",new String[] { "video" }, null, null, null, null, null, null);
+            if(crs != null)
+            {
+                crs.moveToFirst();
+                respuesta = crs.getString(0);
+            }
+            crs.close();
+            db.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
+
+    public void setVideo(String tmp)
+    {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put( "video" ,  tmp);
+        modificar("conf",contentValues,null, null);
+    }
 }

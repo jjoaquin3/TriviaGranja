@@ -2,27 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.joaquin.triviagranja">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:screenOrientation="landscape">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".jordy.menu" />
         <activity android:name=".jose.conteo" />
         <activity android:name=".victor.ListaCategoriaActivity" />
         <activity android:name=".victor.ListaPreguntaActivity" />
         <activity android:name=".victor.ListaRespuestaActivity" />
         <activity android:name=".victor.EditarRespuestaActivity" />
-        <activity android:name=".victor.TriviaActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".victor.TriviaActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".victor.confActivity" />
+        <activity android:name=".victor.UsuarioActivity"></activity>
     </application>
 
 </manifest>

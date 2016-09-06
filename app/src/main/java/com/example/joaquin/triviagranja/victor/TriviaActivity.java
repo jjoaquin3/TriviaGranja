@@ -25,15 +25,16 @@ import java.util.Random;
 public class TriviaActivity extends AppCompatActivity {
 
     boolean flag=true;
-    Categoria categorias[] = new Categoria[3];
-    Pregunta preguntas[] = new Pregunta[9];
+    Categoria categorias[];
+    Pregunta preguntas[];
     Respuesta respuestas[] = new Respuesta[4];
     Pregunta pregunta = null;
     Modelo modelo = new Modelo(this);
     boolean touch_active = true;
-    int numPregunta = 9;
-    int numCategorias = 3;
+    int numPregunta;
+    int numCategorias;
     int puntos = 0;
+    int demo = 0;
 
     CountDownTimer eltime;
     int limitetiempo = 150 * 1000;
@@ -42,59 +43,90 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        //recuperar categorias
-        Intent intent = getIntent();
-        for (int x = 0; x < categorias.length ; x++) {
-            categorias[x] = modelo.getCategoria(intent.getStringExtra("categoria"+(x+1)));
-        }
 
-/*        for (int x = 0; x < categorias.length ; x++) {
-            categorias[x] = modelo.getCategoria("categoria"+(x+1));
-        }*/
+
+        Intent intent = getIntent();
+        //verificar si es un demo
+        demo = intent.getIntExtra("demo",1);
+        if(demo == 1)
+        {
+            numCategorias = 1;
+            numPregunta = numCategorias * 3; //limite
+            categorias = new Categoria[numCategorias];
+            preguntas = new Pregunta[numPregunta];
+            Random rm = new Random();
+            for (int x = 0; x < categorias.length; x++) {
+                int c = rm.nextInt(10 - 1) + 1;
+                categorias[x] = modelo.getCategoria(Long.valueOf(String.valueOf(c)));
+            }
+        }
+        else {
+
+            numCategorias = 3;
+            numPregunta = numCategorias * 3;//limite
+            categorias = new Categoria[numCategorias];
+            preguntas = new Pregunta[numPregunta];
+
+            //recuperar categorias
+            for (int x = 0; x < categorias.length; x++) {
+                categorias[x] = modelo.getCategoria(intent.getStringExtra("categoria" + (x + 1)));
+            }
+
+    /*        for (int x = 0; x < categorias.length ; x++) {
+                categorias[x] = modelo.getCategoria("categoria"+(x+1));
+            }*/
+            calcularT();
+            eltime = new CountDownTimer(limitetiempo, 1000) {
+                TextView tvtime = (TextView) findViewById(R.id.TVtimer);
+
+                public void onTick(long millisUntilFinished) {
+                    String texto = "";
+                    long mili = millisUntilFinished / 1000;
+                    int minutos = (int) mili / 60;
+                    int segundos = (int) mili - (minutos * 60);
+                    if (minutos > 0) {
+                        texto += String.valueOf(minutos) + " : ";
+                        if (segundos < 10)
+                            texto += "0";
+                    } else {
+                        if (segundos < 10)
+                            tvtime.setTextColor(Color.RED);
+                    }
+                    texto += String.valueOf(segundos);
+
+                    tvtime.setText(texto);
+                }
+
+                public void onFinish() {
+                    tvtime.setText("done!");
+                    touch_active = false;
+                    //pasar a la siguiente actividad y pasar los puntos
+                }
+            }.start();
+        }
 
         recuperar_info();
         colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
         colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
         colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
         colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
-
         colocarFonts();
-
         iniciar();
-        eltime = new CountDownTimer(limitetiempo, 1000) {
-            TextView tvtime = (TextView)findViewById(R.id.TVtimer);
 
-            public void onTick(long millisUntilFinished) {
-                String texto = "";
-                long mili = millisUntilFinished / 1000;
-                int minutos = (int)mili / 60;
-                int segundos = (int)mili - (minutos * 60);
-                if(minutos > 0){
-                    texto += String.valueOf(minutos) + " : ";
-                    if(segundos < 10)
-                        texto += "0";
-                }else
-                {
-                    if(segundos < 10)
-                        tvtime.setTextColor(Color.RED);
-                }
-                texto += String.valueOf(segundos);
-
-                tvtime.setText(texto);
-            }
-
-            public void onFinish() {
-                tvtime.setText("done!");
-                touch_active = false;
-                //pasar a la siguiente actividad
-            }
-        }.start();
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         modelo.destruir();
+    }
+
+    private void calcularT()
+    {
+        //calcular el tiempo
+        String kktiempo = "0";
+        kktiempo = modelo.getTmp();
+        limitetiempo = Integer.valueOf(kktiempo) * 1000;
     }
 
     private void recuperar_info()
@@ -105,7 +137,7 @@ public class TriviaActivity extends AppCompatActivity {
                 Pregunta preguntas_tmp[] = modelo.getAllPreguntasFiltro(categorias[i]);
                 System.out.println("tamaño de " + categorias[i].getNombre() + " " + preguntas_tmp.length);
                 if(preguntas_tmp != null) {
-                    int limite = 3;
+                    int limite = 3;//limite
                     if (preguntas_tmp.length >= limite) {
                         ArrayList<Long> prgSeleccionadas = new ArrayList();
                         Random rm = new Random();
@@ -227,9 +259,15 @@ public class TriviaActivity extends AppCompatActivity {
         }
         else
         {
-            //pasar al activity de respuestas
             System.out.println("fin");
-            eltime.cancel();
+            if(demo == 1)
+            {
+                this.finish();
+            }
+            else {
+                //pasar al activity de respuestas
+                eltime.cancel();
+            }
         }
     }
 

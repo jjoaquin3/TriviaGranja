@@ -66,25 +66,6 @@
                         android:background="@android:color/holo_orange_light"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="cursive"
-                        android:textStyle="bold|italic"
-                        android:text="@string/LBimagen"
-                        android:gravity="start"
-                        android:textSize="@dimen/ATTconfiguracion"
-                        android:layout_marginTop="@dimen/Margenbetween"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/attConfM"
-                        android:inputType="textPersonName"
-                        android:ems="5"
-                        android:id="@+id/ETimagenCategoria"
-                        android:background="@android:color/holo_orange_light"
-                        />
-
                 </LinearLayout>
 
                 <LinearLayout

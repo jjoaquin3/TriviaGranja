@@ -54,6 +54,7 @@
                 android:id="@+id/TVrespuesta1"
                 android:gravity="center_vertical"
                 android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+
                 />
 
         </TableRow>

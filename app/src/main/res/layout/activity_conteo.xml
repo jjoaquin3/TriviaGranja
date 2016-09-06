@@ -28,8 +28,8 @@
                 android:id="@+id/imageView_conteo_titular"
                 android:layout_gravity="center_horizontal|top"
                 android:scaleType="fitCenter"
-                android:background="@drawable/conteo_titular2"
-                android:contentDescription="@string/img_conteo_titular" />
+                android:contentDescription="@string/img_conteo_titular"
+                android:background="@drawable/conteo_titular" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,12 +43,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="42dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginTop="45dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/conteo_3"
                 android:contentDescription="@string/img_conteo_numeros"
-                android:id="@+id/imageView2_conteo_numeros" />
+                android:id="@+id/imageView_conteo_numeros" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -62,8 +62,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_conteo_atras"
+                android:onClick="conteo_btnAtras"
                 android:background="@drawable/conteo_atras_efecto"
-                android:onClick="conteo_retroceso" />
+                android:nestedScrollingEnabled="false" />
+
         </LinearLayout>
 
     </FrameLayout>

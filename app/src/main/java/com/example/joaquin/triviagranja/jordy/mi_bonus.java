@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -163,15 +164,27 @@ public class mi_bonus extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!this.isFinishing()){
-            MainActivity.mp_fondo.pause();
+        try
+        {
+            if(lee_pregunta.isPlaying())
+            {
+                lee_pregunta.stop();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        MainActivity.mp_fondo.start();
+        //MainActivity.mp_fondo.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //this.finish();
     }
 
 }

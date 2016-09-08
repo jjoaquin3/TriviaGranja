@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.joaquin.triviagranja.MainActivity;
 import com.example.joaquin.triviagranja.R;
@@ -44,7 +45,48 @@ public class resultados extends FragmentActivity {
         setContentView(R.layout.activity_resultados);
         ViewPager viewPager = (ViewPager) findViewById(R.id.Mipager);
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            // This method will be invoked when a new page becomes selected.
+            @Override
+            public void onPageSelected(int position) {
+             if (position==1){
+                 if (puntaje >= 0 && puntaje <= 300) {
+                     reproducirSonidoResultados(R.raw.premio_1_nada);
+                 } else if (puntaje >= 301 && puntaje <= 600) {
+                     reproducirSonidoResultados(R.raw.premio_3_bolsa);
+                 } else if (puntaje >= 601 && puntaje <= 900) {
+                     reproducirSonidoResultados(R.raw.premio_2_audifonos);
+                 } else if (puntaje >= 901 && puntaje <= 1500) {
+                     reproducirSonidoResultados(R.raw.premio_4_selfie);
+                 } else {
+                     reproducirSonidoResultados(R.raw.premio_1_nada);
+                 }
+             }
+            }
+
+            // This method will be invoked when the current page is scrolled
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Code goes here
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Code goes here
+            }
+        });
         viewPager.setAdapter(mAdapter);
+    }
+
+    private void reproducirSonidoResultados(int id_raw)
+    {
+        if(mp_resumen_ganador.isPlaying())
+            mp_resumen_ganador.stop();
+        mp_resumen_ganador.reset();
+        mp_resumen_ganador = MediaPlayer.create(this, id_raw);
+        mp_resumen_ganador.start();
     }
 
     public void return_inicio(View v){
@@ -54,7 +96,6 @@ public class resultados extends FragmentActivity {
             {
                 mp_resumen_ganador.stop();
                 mp_resumen_ganador.reset();
-                //MainActivity.mp_fondo.start();
             }
         } catch (Exception e)
         {
@@ -65,19 +106,7 @@ public class resultados extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        try
-        {
-            if(mp_resumen_ganador.isPlaying())
-            {
-                mp_resumen_ganador.stop();
-                mp_resumen_ganador.reset();
-                //MainActivity.mp_fondo.start();
-            }
-        } catch (Exception e)
-        {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
-        this.finish();
+
     }
 
     public static class resumen_ganador extends Fragment {
@@ -99,43 +128,25 @@ public class resultados extends FragmentActivity {
             ImageView premio = (ImageView)padre.findViewById(R.id.vista_premio);
             if(conteo>=0 && conteo<=300){
                 txt.setTextSize(80);
-                txt.setText("Jugo De la Granja");
+                txt.setText("Gracias por participar");
                 premio.setImageResource(R.drawable.premio0);
-                reproducirSonidoResultados(R.raw.premio_1_nada);
             }else if (conteo>=301 && conteo<=600){
                 txt.setTextSize(80);
                 txt.setText("Bolsa Ecologica");
                 premio.setImageResource(R.drawable.premio0);
-                reproducirSonidoResultados(R.raw.premio_3_bolsa);
             }else if (conteo>=601 && conteo<=900){
                 txt.setTextSize(80);
                 txt.setText("Audifonos");
                 premio.setImageResource(R.drawable.premio0);
-                reproducirSonidoResultados(R.raw.premio_2_audifonos);
             }else if (conteo>=901 && conteo<=1500){
                 txt.setTextSize(80);
                 txt.setText("Premio Mayor");
                 premio.setImageResource(R.drawable.premio0);
-                reproducirSonidoResultados(R.raw.premio_4_selfie);
             }else{
                 txt.setTextSize(80);
                 txt.setText("Jugo De la Granja");
                 premio.setImageResource(R.drawable.premio0);
             }
-        }
-
-        private void reproducirSonidoResultados(int id_raw)
-        {
-            if(mp_resumen_ganador.isPlaying())
-                mp_resumen_ganador.stop();
-            mp_resumen_ganador.reset();
-            mp_resumen_ganador = MediaPlayer.create(contexto, id_raw);
-            mp_resumen_ganador.start();
-           /* mp_resumen_ganador.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer arg0) {
-                    MainActivity.mp_fondo.start();
-                }
-            });*/
         }
     }
 
@@ -175,7 +186,7 @@ public class resultados extends FragmentActivity {
                         mp_resumen_ganador.stop();
                         mp_resumen_ganador.reset();
                     }
-                  /*  if(!MainActivity.mp_fondo.isPlaying())
+                    /*  if(!MainActivity.mp_fondo.isPlaying())
                         MainActivity.mp_fondo.start();*/
                     return new resumen_ganador();
             }
@@ -192,15 +203,11 @@ public class resultados extends FragmentActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!this.isFinishing()){
-            MainActivity.mp_fondo.pause();
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        MainActivity.mp_fondo.start();
     }
 
 }

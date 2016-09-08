@@ -163,12 +163,22 @@ public class menu extends AppCompatActivity {
     }
 
     public void Actbtn_return(View v){
+        try
+        {
+            if(media.isPlaying())
+            {
+                media.stop();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
         this.finish();
     }
 
     @Override
     public void onBackPressed() {
-        this.finish();
+        //this.finish();
     }
 
     @Override

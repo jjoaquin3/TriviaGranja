@@ -112,6 +112,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
+/*
         System.out.println("regresamos");
         TextView tvpts = (TextView)findViewById(R.id.TVpts);
         tvpts.setText(String.valueOf(puntos) + " pts");
@@ -147,6 +148,7 @@ public class TriviaActivity extends AppCompatActivity {
             }.start();
         }
         iniciar();
+*/
     }
 
 
@@ -315,9 +317,9 @@ public class TriviaActivity extends AppCompatActivity {
             }
             else {
                 //pasar al activity de respuestas
-                if(eltime!= null)
+                /*if(eltime!= null)
                     eltime.cancel();
-                eltime = null;
+                eltime = null;*/
                 finAct();
             }
         }
@@ -389,14 +391,15 @@ public class TriviaActivity extends AppCompatActivity {
                 bonus = true;
                 numBuenas = 0;
                 multiplicador++;
-                if(eltime!=null)
+                /*if(eltime!=null)
                     eltime.cancel();
-                eltime = null;
+                eltime = null;*/
             }
             media=MediaPlayer.create(this,R.raw.win);
             media.start();
         }
         else {
+            numBuenas = 0;
             ivs.setImageResource(R.drawable.incorrecta);
             media=MediaPlayer.create(this,R.raw.fail);
             media.start();
@@ -569,9 +572,9 @@ public class TriviaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        this.finish();
-    }
+        //this.finish();
 
+}
     private int[] SelPregBonus(){
         int aux;
         int[]a = new int[3];
@@ -614,12 +617,53 @@ public class TriviaActivity extends AppCompatActivity {
         if (!this.isFinishing()){
             MainActivity.mp_fondo.pause();
         }
+
+        if(eltime != null)
+            eltime.cancel();
+        eltime = null;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         MainActivity.mp_fondo.start();
+
+        System.out.println("regresamos");
+        TextView tvpts = (TextView)findViewById(R.id.TVpts);
+        tvpts.setText(String.valueOf(puntos) + " pts");
+        if (demo == 0) {
+            eltime = new CountDownTimer(limitetiempo, 1000) {
+                TextView tvtime = (TextView) findViewById(R.id.TVtimer);
+
+                public void onTick(long millisUntilFinished) {
+                    limitetiempo = millisUntilFinished;
+                    String texto = "";
+                    long mili = millisUntilFinished / 1000;
+                    int minutos = (int) mili / 60;
+                    int segundos = (int) mili - (minutos * 60);
+                    if (minutos > 0) {
+                        texto += String.valueOf(minutos) + " : ";
+                        if (segundos < 10)
+                            texto += "0";
+                    } else {
+                        if (segundos < 10)
+                            tvtime.setTextColor(Color.RED);
+                    }
+                    texto += String.valueOf(segundos);
+
+                    tvtime.setText(texto);
+                }
+
+                public void onFinish() {
+                    touch_active = false;
+                    finalizarPorTiempo = true;
+                    tvtime.setText("Fin!");
+                    finAct();
+                }
+            }.start();
+        }
+        iniciar();
+
     }
 
 

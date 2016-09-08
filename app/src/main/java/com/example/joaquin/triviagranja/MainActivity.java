@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(!mp_fondo.isPlaying())
+            mp_fondo.start();
         mp_fondo.setVolume(volumenmax,volumenmax);
     }
 

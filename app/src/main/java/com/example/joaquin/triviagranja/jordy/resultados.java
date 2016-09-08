@@ -57,7 +57,7 @@ public class resultados extends FragmentActivity {
                  }else if (puntaje>=400 && puntaje<=600){
                      reproducirSonidoResultados(R.raw.premio_3_bolsa);
                  }else if (puntaje>=700 && puntaje<=800){
-                     //Audio de la gabacha
+                     reproducirSonidoResultados(R.raw.gabacha);
                  }else if (puntaje>=900 && puntaje<=1100) {
                      reproducirSonidoResultados(R.raw.premio_2_audifonos);
                  }else if (puntaje>=1200 && puntaje<=1500){

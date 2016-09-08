@@ -52,13 +52,15 @@ public class resultados extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
              if (position==1){
-                 if (puntaje >= 0 && puntaje <= 300) {
+                 if(puntaje>=0 && puntaje<=300){
                      reproducirSonidoResultados(R.raw.premio_1_nada);
-                 } else if (puntaje >= 301 && puntaje <= 600) {
+                 }else if (puntaje>=400 && puntaje<=600){
                      reproducirSonidoResultados(R.raw.premio_3_bolsa);
-                 } else if (puntaje >= 601 && puntaje <= 900) {
+                 }else if (puntaje>=700 && puntaje<=800){
+                     //Audio de la gabacha
+                 }else if (puntaje>=900 && puntaje<=1100) {
                      reproducirSonidoResultados(R.raw.premio_2_audifonos);
-                 } else if (puntaje >= 901 && puntaje <= 1500) {
+                 }else if (puntaje>=1200 && puntaje<=1500){
                      reproducirSonidoResultados(R.raw.premio_4_selfie);
                  } else {
                      reproducirSonidoResultados(R.raw.premio_1_nada);
@@ -129,23 +131,27 @@ public class resultados extends FragmentActivity {
             if(conteo>=0 && conteo<=300){
                 txt.setTextSize(80);
                 txt.setText("Gracias por participar");
-                premio.setImageResource(R.drawable.premio0);
-            }else if (conteo>=301 && conteo<=600){
+                premio.setImageResource(R.drawable.main_logo);
+            }else if (conteo>=400 && conteo<=600){
                 txt.setTextSize(80);
                 txt.setText("Bolsa Ecologica");
-                premio.setImageResource(R.drawable.premio0);
-            }else if (conteo>=601 && conteo<=900){
+                premio.setImageResource(R.drawable.ganador_premio2);
+            }else if (conteo>=700 && conteo<=800){
                 txt.setTextSize(80);
-                txt.setText("Audifonos");
-                premio.setImageResource(R.drawable.premio0);
-            }else if (conteo>=901 && conteo<=1500){
+                txt.setText("Gabacha");
+                premio.setImageResource(R.drawable.ganador_premio3);
+            }else if (conteo>=900 && conteo<=1100) {
                 txt.setTextSize(80);
-                txt.setText("Premio Mayor");
-                premio.setImageResource(R.drawable.premio0);
+                txt.setText("Audiculares");
+                premio.setImageResource(R.drawable.ganador_premio4);
+            }else if (conteo>=1200 && conteo<=1500){
+                txt.setTextSize(80);
+                txt.setText("selfie stick");
+                premio.setImageResource(R.drawable.main_logo);
             }else{
                 txt.setTextSize(80);
-                txt.setText("Jugo De la Granja");
-                premio.setImageResource(R.drawable.premio0);
+                txt.setText("Gracias por participar");
+                premio.setImageResource(R.drawable.main_logo);
             }
         }
     }

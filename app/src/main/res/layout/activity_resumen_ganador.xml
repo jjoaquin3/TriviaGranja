@@ -69,10 +69,10 @@
                 android:layout_weight="1"
                 android:id="@+id/vista_premio"
                 android:scaleType="fitCenter"
+                android:src="@drawable/main_logo"
 
 
-
-                />
+                android:paddingRight="180dp" />
         </TableRow>
 
 

@@ -35,7 +35,8 @@
             android:screenOrientation="landscape" />
         <activity android:name=".victor.confActivity" />
         <activity android:name=".victor.UsuarioActivity" />
-        <activity android:name=".jordy.resultados" />
+        <activity android:name=".jordy.resultados"
+            android:screenOrientation="landscape" />
         <activity android:name=".jordy.mi_bonus"></activity>
     </application>
 

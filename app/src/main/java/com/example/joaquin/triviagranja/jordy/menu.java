@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -95,6 +96,18 @@ public class menu extends AppCompatActivity {
     }
 
     public void Actbtn_return(View v){
+        try
+        {
+            if(media.isPlaying())
+            {
+                media.stop();
+                media.reset();
+                MainActivity.mp_fondo.start();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
         this.finish();
     }
 
@@ -165,6 +178,18 @@ public class menu extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        try
+        {
+            if(media.isPlaying())
+            {
+                media.stop();
+                media.reset();
+                MainActivity.mp_fondo.start();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
         this.finish();
     }
 

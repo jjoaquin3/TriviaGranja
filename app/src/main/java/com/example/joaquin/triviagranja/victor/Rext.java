@@ -73,13 +73,13 @@ public class Rext {
             if (sd.canWrite()) {
                 System.out.println("sd " + sd.getAbsolutePath());
                 System.out.println("data " + data.getAbsolutePath());
-                //String currentDBPath = "//data//"+contexto.getPackageName()+"//databases//"+databaseName+"";
+                //String currentDBPath = "//data//"+c.getPackageName()+"//databases//"+databaseName+"";
                 String backupDBPath = databaseName;
 //                File currentDB = new File(data, currentDBPath);
                 File currentDB = data;
                 File backupDB = new File(sd, backupDBPath);
 
-                System.out.println("contexto " + currentDB.getAbsolutePath());
+                System.out.println("c " + currentDB.getAbsolutePath());
                 System.out.println("bk " + backupDB.getAbsolutePath());
 
                 if (currentDB.exists()) {

@@ -1,15 +1,18 @@
 package com.example.joaquin.triviagranja.jordy;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ public class resultados extends FragmentActivity {
 
     static public Integer puntaje;
     static public Typeface TF;
+    static MediaPlayer mp_resumen_ganador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,8 @@ public class resultados extends FragmentActivity {
         } else {
             puntaje= extras.getInt("totalp");
         }
+        mp_resumen_ganador = new MediaPlayer();
+        resumen_ganador.contexto=this;
         setContentView(R.layout.activity_resultados);
         ViewPager viewPager = (ViewPager) findViewById(R.id.Mipager);
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -42,10 +48,41 @@ public class resultados extends FragmentActivity {
     }
 
     public void return_inicio(View v){
-        finish();
+        try
+        {
+            if(mp_resumen_ganador.isPlaying())
+            {
+                mp_resumen_ganador.stop();
+                mp_resumen_ganador.reset();
+                MainActivity.mp_fondo.start();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
+        this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        try
+        {
+            if(mp_resumen_ganador.isPlaying())
+            {
+                mp_resumen_ganador.stop();
+                mp_resumen_ganador.reset();
+                MainActivity.mp_fondo.start();
+            }
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
+        this.finish();
     }
 
     public static class resumen_ganador extends Fragment {
+
+        public static Context contexto;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +91,6 @@ public class resultados extends FragmentActivity {
             DarPremio(rootView,resultados.puntaje,resultados.TF);
             return rootView;
         }
-
 
         private void DarPremio(View padre, int conteo, Typeface fuente){
             TextView txt = (TextView)padre.findViewById(R.id.text_ganador_desc);
@@ -65,18 +101,22 @@ public class resultados extends FragmentActivity {
                 txt.setTextSize(80);
                 txt.setText("Jugo De la Granja");
                 premio.setImageResource(R.drawable.premio0);
+                reproducirSonidoResultados(R.raw.premio_1_nada);
             }else if (conteo>=301 && conteo<=600){
                 txt.setTextSize(80);
                 txt.setText("Bolsa Ecologica");
                 premio.setImageResource(R.drawable.premio0);
+                reproducirSonidoResultados(R.raw.premio_3_bolsa);
             }else if (conteo>=601 && conteo<=900){
                 txt.setTextSize(80);
                 txt.setText("Audifonos");
                 premio.setImageResource(R.drawable.premio0);
+                reproducirSonidoResultados(R.raw.premio_2_audifonos);
             }else if (conteo>=901 && conteo<=1500){
                 txt.setTextSize(80);
                 txt.setText("Premio Mayor");
                 premio.setImageResource(R.drawable.premio0);
+                reproducirSonidoResultados(R.raw.premio_4_selfie);
             }else{
                 txt.setTextSize(80);
                 txt.setText("Jugo De la Granja");
@@ -84,12 +124,19 @@ public class resultados extends FragmentActivity {
             }
         }
 
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        this.finish();
+        private void reproducirSonidoResultados(int id_raw)
+        {
+            if(mp_resumen_ganador.isPlaying())
+                mp_resumen_ganador.stop();
+            mp_resumen_ganador.reset();
+            mp_resumen_ganador = MediaPlayer.create(contexto, id_raw);
+            mp_resumen_ganador.start();
+            mp_resumen_ganador.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer arg0) {
+                    MainActivity.mp_fondo.start();
+                }
+            });
+        }
     }
 
     public static class resumen_punteo extends Fragment {
@@ -107,8 +154,6 @@ public class resultados extends FragmentActivity {
         }
     }
 
-
-
     public class TabsPagerAdapter extends FragmentPagerAdapter {
 
         public TabsPagerAdapter(FragmentManager fm) {
@@ -121,9 +166,17 @@ public class resultados extends FragmentActivity {
             switch (index) {
                 case 0:
                     // Top Rated fragment activity
+                    MainActivity.mp_fondo.pause();
                     return new resumen_punteo();
                 case 1:
                     // Games fragment activity
+                    if(mp_resumen_ganador.isPlaying())
+                    {
+                        mp_resumen_ganador.stop();
+                        mp_resumen_ganador.reset();
+                    }
+                    if(!MainActivity.mp_fondo.isPlaying())
+                        MainActivity.mp_fondo.start();
                     return new resumen_ganador();
             }
 

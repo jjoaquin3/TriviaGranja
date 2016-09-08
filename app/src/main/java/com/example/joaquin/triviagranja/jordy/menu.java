@@ -38,11 +38,11 @@ public class menu extends AppCompatActivity {
     private void reproducirBienvenida()
     {
         media.start();
-        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+       /* media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer arg0) {
                 MainActivity.mp_fondo.setVolume(MainActivity.volumenmax,MainActivity.volumenmax);
             }
-        });
+        });*/
     }
 
     public void Actbtn_menu_champey(View v){
@@ -163,18 +163,6 @@ public class menu extends AppCompatActivity {
     }
 
     public void Actbtn_return(View v){
-        try
-        {
-            if(media.isPlaying())
-            {
-                media.stop();
-                media.reset();
-                MainActivity.mp_fondo.start();
-            }
-        } catch (Exception e)
-        {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
         this.finish();
     }
 
@@ -188,10 +176,11 @@ public class menu extends AppCompatActivity {
         super.onPause();
         if (!this.isFinishing()){
             MainActivity.mp_fondo.pause();
-        media.stop();
+            media.stop();
         }
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
         MainActivity.mp_fondo.start();

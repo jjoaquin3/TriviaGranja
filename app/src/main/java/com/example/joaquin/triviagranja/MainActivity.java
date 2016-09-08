@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public static MediaPlayer mp_fondo;
     private ArrayList<Integer> playlist;
     private int id_raw =0;
-    public static float volumen = 0.7f;
+    public static float volumen = 0.4f;
     public static float volumenmax = 1.0f;
 
     @Override
@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
     public void main_btnDemo(View v)
     {
         System.out.println("----------> Acción del boton Demo - Main");
-        mp_fondo.setVolume(volumen,volumen);
         Intent pantalla_conteo = new Intent(this, TriviaActivity.class);
         int d = 1;
         pantalla_conteo.putExtra("demo",d);
@@ -140,13 +139,21 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         if (!this.isFinishing()){
             //Insert code for HOME  key Event
-            mp_fondo.pause();
+            mp_fondo.setVolume(volumen,volumen);
         }
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        mp_fondo.start();
+        mp_fondo.setVolume(volumenmax,volumenmax);
+    }
+
+    @Override
+    protected void  onDestroy()
+    {
+        super.onDestroy();
+        mp_fondo.stop();
     }
 
     private AlertDialog createSimpleDialog() {
@@ -160,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
                                 pantalla_menu.putExtra("genero",0);
-                                mp_fondo.setVolume(volumen,volumen);
                                 startActivity(pantalla_menu);
                             }
                         })
@@ -170,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
                                 pantalla_menu.putExtra("genero",1);
-                                mp_fondo.setVolume(volumen,volumen);
                                 startActivity(pantalla_menu);
                             }
                         })

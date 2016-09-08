@@ -20,6 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.joaquin.triviagranja.jordy.mi_bonus;
 
 import com.example.joaquin.triviagranja.R;
 
@@ -41,6 +42,9 @@ public class TriviaActivity extends AppCompatActivity {
     int numCategorias;
     public static int puntos = 0;
     int demo = 0;
+    int ContenoBonus=0;
+
+    int PreguntasBonus[];
 
     CountDownTimer eltime = null;
     long limitetiempo = 150 * 1000;
@@ -54,7 +58,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        MainActivity.mp_fondo.setVolume(0.8f,0.8f);
+        //MainActivity.mp_fondo.setVolume(0.8f,0.8f);
         //MainActivity.mp_fondo.stop();
         multiplicador = 0;
         puntos = 0;
@@ -99,6 +103,8 @@ public class TriviaActivity extends AppCompatActivity {
         colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
         colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
         colocarFonts();
+
+        PreguntasBonus=SelPregBonus();
         //iniciar();
     }
 
@@ -143,11 +149,11 @@ public class TriviaActivity extends AppCompatActivity {
         iniciar();
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         modelo.destruir();
-        MainActivity.mp_fondo.setVolume(1.0f,1.0f);
     }
 
     private void calcularT()
@@ -166,14 +172,14 @@ public class TriviaActivity extends AppCompatActivity {
                 resumen.putExtra("totalp", puntos);
                 startActivity(resumen);
                 TriviaActivity.this.finish();
-                }
+            }
         }, 1500);
     }
 
     private void recuperar_info()
     {
         for (int i = 0; i < categorias.length ; i++) {
-           // categorias[i] = modelo.getCategoria(id_cat[i]);
+            // categorias[i] = modelo.getCategoria(id_cat[i]);
             if (categorias[i] != null) {
                 Pregunta preguntas_tmp[] = modelo.getAllPreguntasFiltro(categorias[i]);
                 System.out.println("tamaño de " + categorias[i].getNombre() + " " + preguntas_tmp.length);
@@ -477,9 +483,13 @@ public class TriviaActivity extends AppCompatActivity {
                     if (bonus) {
                         //pasamos al activity del bonus
                         bonus = false;
-                        //xxxxxxxxxxxxx
-                        //Intent resumen = new Intent(getApplicationContext(), prueba.class);
-                        //startActivity(resumen);
+                        ContenoBonus++;
+                        Intent i = new Intent(getApplicationContext(), mi_bonus.class);
+                        i.putExtra("p0",ContenoBonus*100);
+                        i.putExtra("p1",PreguntasBonus[ContenoBonus-1]);
+                        startActivity(i);
+                        overridePendingTransition(R.anim.animacion2, R.anim.animacion1);
+
                     } else {
                         iniciar();
                     }
@@ -559,17 +569,58 @@ public class TriviaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        try
-        {
-            if(eltime != null)
-                eltime.cancel();
-            eltime = null;
-            //if(!MainActivity.mp_fondo.isPlaying())
-                //MainActivity.mp_fondo.start();
-        } catch (Exception e)
-        {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
         this.finish();
     }
+
+    private int[] SelPregBonus(){
+        int aux;
+        int[]a = new int[3];
+        aux=numAleator();
+
+        if(aux==5){
+            a[0]=aux;
+            aux--;
+            a[1]=aux;
+            aux--;
+            a[2]=aux;
+        }else if (aux==4){
+            a[0]=aux;
+            aux--;
+            a[1]=aux;
+            aux--;
+            a[2]=aux;
+        }else {
+            a[0]=aux;
+            aux++;
+            a[1]=aux;
+            aux++;
+            a[2]=aux;
+        }
+        return a;
+    }
+
+    private int numAleator(){
+        int x=(int)(Math.random()*5 + 1);
+        if(x==0||x>5){
+            return 1;
+        }else{
+            return x;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!this.isFinishing()){
+            MainActivity.mp_fondo.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.mp_fondo.start();
+    }
+
+
 }

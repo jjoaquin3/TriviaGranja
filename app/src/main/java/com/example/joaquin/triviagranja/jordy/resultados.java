@@ -54,7 +54,7 @@ public class resultados extends FragmentActivity {
             {
                 mp_resumen_ganador.stop();
                 mp_resumen_ganador.reset();
-                MainActivity.mp_fondo.start();
+                //MainActivity.mp_fondo.start();
             }
         } catch (Exception e)
         {
@@ -71,7 +71,7 @@ public class resultados extends FragmentActivity {
             {
                 mp_resumen_ganador.stop();
                 mp_resumen_ganador.reset();
-                MainActivity.mp_fondo.start();
+                //MainActivity.mp_fondo.start();
             }
         } catch (Exception e)
         {
@@ -131,11 +131,11 @@ public class resultados extends FragmentActivity {
             mp_resumen_ganador.reset();
             mp_resumen_ganador = MediaPlayer.create(contexto, id_raw);
             mp_resumen_ganador.start();
-            mp_resumen_ganador.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+           /* mp_resumen_ganador.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 public void onCompletion(MediaPlayer arg0) {
                     MainActivity.mp_fondo.start();
                 }
-            });
+            });*/
         }
     }
 
@@ -166,7 +166,7 @@ public class resultados extends FragmentActivity {
             switch (index) {
                 case 0:
                     // Top Rated fragment activity
-                    MainActivity.mp_fondo.pause();
+                    //MainActivity.mp_fondo.pause();
                     return new resumen_punteo();
                 case 1:
                     // Games fragment activity
@@ -175,8 +175,8 @@ public class resultados extends FragmentActivity {
                         mp_resumen_ganador.stop();
                         mp_resumen_ganador.reset();
                     }
-                    if(!MainActivity.mp_fondo.isPlaying())
-                        MainActivity.mp_fondo.start();
+                  /*  if(!MainActivity.mp_fondo.isPlaying())
+                        MainActivity.mp_fondo.start();*/
                     return new resumen_ganador();
             }
             return null;
@@ -188,4 +188,19 @@ public class resultados extends FragmentActivity {
             return 2;
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!this.isFinishing()){
+            MainActivity.mp_fondo.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.mp_fondo.start();
+    }
+
 }

@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -111,7 +112,7 @@ public class conteo extends AppCompatActivity {
         {
             if(mp_fondo_conteo.isPlaying())
                 mp_fondo_conteo.stop();
-            MainActivity.mp_fondo.start();
+            //MainActivity.mp_fondo.start();
         } catch (Exception e)
         {
             Log.v(getString(R.string.app_name), e.getMessage());
@@ -131,7 +132,6 @@ public class conteo extends AppCompatActivity {
             inicio.putExtra("categoria3", extras.getString("categoria3"));
             int d = 0;
             inicio.putExtra("demo",d);
-
             MainActivity.mp_fondo.start();
             startActivity(inicio);
             this.finish();
@@ -144,11 +144,27 @@ public class conteo extends AppCompatActivity {
         {
             if(mp_fondo_conteo.isPlaying())
                 mp_fondo_conteo.stop();
-            MainActivity.mp_fondo.start();
+            //MainActivity.mp_fondo.start();
         } catch (Exception e)
         {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
         this.finish();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!this.isFinishing()){
+            MainActivity.mp_fondo.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.mp_fondo.start();
+    }
+
+
 }

@@ -32,93 +32,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.9" >
+            android:layout_weight="0.95" >
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1"
-                android:baselineAligned="false">
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollViewListaPreguntas"
+                android:layout_gravity="center_horizontal"
+                android:fillViewport="false" >
 
                 <LinearLayout
+                    android:id="@+id/layoutPreguntas"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold|italic"
-                        android:fontFamily="cursive"
-                        android:text="@string/LBnombre"
-                        android:gravity="start"
-                        android:textSize="@dimen/ATTconfiguracion"
-                        />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/attConfM"
-                        android:inputType="textPersonName"
-                        android:ems="5"
-                        android:id="@+id/ETnombreCategoria"
-                        android:background="@android:color/holo_orange_light"
-                        />
-
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
                 </LinearLayout>
+            </ScrollView>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:layout_marginStart="@dimen/Margenbetween">
-
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/scrollViewListaPreguntas"
-                        android:layout_gravity="center_horizontal"
-                        android:fillViewport="false" >
-
-                        <LinearLayout
-                            android:id="@+id/layoutPreguntas"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
-                        </LinearLayout>
-                    </ScrollView>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/BTaddPregunta"
             android:weightSum="1"
-            android:gravity="end"
-            android:layout_weight="0.05"
-            >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/BTapply"
-                android:id="@+id/BTapplyCategoria"
-                android:layout_weight="0.25"
-                android:layout_gravity="start"
-                android:textAppearance="@style/applyText"
-                android:textSize="@dimen/ATTconfiguracion" />
+            android:gravity="end">
 
             <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/imageButton_addQuest"
                 android:src="@drawable/plus"
                 android:scaleType="fitCenter"
-                android:layout_weight="0.25"
+                android:layout_weight="0.10"
                 android:contentDescription="@string/IVdescripcion"
                 android:adjustViewBounds="false"
                 android:onClick="addQuestion" />

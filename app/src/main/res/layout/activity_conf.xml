@@ -149,35 +149,6 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold|italic"
                     android:fontFamily="cursive"
-                    android:text="@string/LBvideo"
-                    android:layout_gravity="center"
-                    android:textSize="@dimen/ATTconfiguracion2"
-                    />
-
-                <EditText
-                    android:layout_width="@dimen/confPET"
-                    android:layout_height="@dimen/attConfM"
-                    android:inputType="textPersonName"
-                    android:ems="5"
-                    android:id="@+id/ETvideo"
-                    android:layout_gravity="center"
-                    android:background="@android:color/holo_orange_light" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modificar Video"
-                    android:id="@+id/button"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="BTv"
-                    android:textSize="@dimen/ATTconf"
-                    android:textAppearance="@style/applyText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold|italic"
-                    android:fontFamily="cursive"
                     android:text="@string/LBtmp"
                     android:layout_gravity="center_horizontal"
                     android:textSize="@dimen/ATTconfiguracion2"

@@ -1,9 +1,12 @@
 package com.example.joaquin.triviagranja.victor;
 
+import com.example.joaquin.triviagranja.MainActivity;
 import com.example.joaquin.triviagranja.jordy.resultados;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -20,11 +23,14 @@ import android.widget.TextView;
 
 import com.example.joaquin.triviagranja.R;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class TriviaActivity extends AppCompatActivity {
 
+    MediaPlayer media;
+    MediaPlayer mediaPrg = null;
     boolean flag=true;
     Categoria categorias[];
     Pregunta preguntas[];
@@ -34,17 +40,25 @@ public class TriviaActivity extends AppCompatActivity {
     boolean touch_active = true;
     int numPregunta;
     int numCategorias;
-    int puntos = 0;
+    public static int puntos = 0;
     int demo = 0;
 
-    CountDownTimer eltime;
-    int limitetiempo = 150 * 1000;
+    CountDownTimer eltime = null;
+    long limitetiempo = 150 * 1000;
+
+    public static int multiplicador;
+    int numBuenas = 0;
+    boolean bonus = false;
+    boolean finalizarPorTiempo = false;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-
+        //MainActivity.fondo.setVolume(0.2f,0.2f);
+        MainActivity.fondo.stop();
+        multiplicador = 0;
+        puntos = 0;
 
         Intent intent = getIntent();
         //verificar si es un demo
@@ -77,10 +91,31 @@ public class TriviaActivity extends AppCompatActivity {
                 categorias[x] = modelo.getCategoria("categoria"+(x+1));
             }*/
             calcularT();
+
+        }
+
+        recuperar_info();
+        colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
+        colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
+        colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
+        colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
+        colocarFonts();
+        //iniciar();
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        System.out.println("regresamos");
+        TextView tvpts = (TextView)findViewById(R.id.TVpts);
+        tvpts.setText(String.valueOf(puntos) + " pts");
+        if (demo == 0) {
             eltime = new CountDownTimer(limitetiempo, 1000) {
                 TextView tvtime = (TextView) findViewById(R.id.TVtimer);
 
                 public void onTick(long millisUntilFinished) {
+                    limitetiempo = millisUntilFinished;
                     String texto = "";
                     long mili = millisUntilFinished / 1000;
                     int minutos = (int) mili / 60;
@@ -99,21 +134,14 @@ public class TriviaActivity extends AppCompatActivity {
                 }
 
                 public void onFinish() {
-                    tvtime.setText("Fin!");
                     touch_active = false;
+                    finalizarPorTiempo = true;
+                    tvtime.setText("Fin!");
                     finAct();
                 }
             }.start();
         }
-
-        recuperar_info();
-        colocarListeners(R.id.TVrespuesta1, R.id.IVrespuesta1, 0);
-        colocarListeners(R.id.TVrespuesta2, R.id.IVrespuesta2, 1);
-        colocarListeners(R.id.TVrespuesta3, R.id.IVrespuesta3, 2);
-        colocarListeners(R.id.TVrespuesta4, R.id.IVrespuesta4, 3);
-        colocarFonts();
         iniciar();
-
     }
 
     @Override
@@ -131,10 +159,15 @@ public class TriviaActivity extends AppCompatActivity {
     }
 
     private void finAct(){
-        Intent resumen  = new Intent(this, resultados.class);
-        resumen.putExtra("totalp", puntos);
-        startActivity(resumen);
-        this.finish();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent resumen  = new Intent(getApplicationContext(), resultados.class);
+                resumen.putExtra("totalp", puntos);
+                startActivity(resumen);
+                TriviaActivity.this.finish();
+                }
+        }, 1500);
     }
 
     private void recuperar_info()
@@ -215,9 +248,11 @@ public class TriviaActivity extends AppCompatActivity {
         if(numPregunta >= 0) {
             if(flag) {
                 pregunta = preguntas[numPregunta];
+                reproducirPregunta(pregunta.getAudio());
                 TextView tvtitulo = (TextView) findViewById(R.id.TVtextoPregunta);
                 tvtitulo.setText(pregunta.getTexto());
                 //recuperar respuestas de la pregunta actual
+                System.out.println("repo " + pregunta.getTexto());
                 recuperarRespuestas(pregunta);
                 if(flag) {
                     ImageView iv1 = (ImageView) findViewById(R.id.IVrespuesta1);
@@ -274,7 +309,9 @@ public class TriviaActivity extends AppCompatActivity {
             }
             else {
                 //pasar al activity de respuestas
-                eltime.cancel();
+                if(eltime!= null)
+                    eltime.cancel();
+                eltime = null;
                 finAct();
             }
         }
@@ -339,9 +376,24 @@ public class TriviaActivity extends AppCompatActivity {
             puntos = puntos + pregunta.getPuntos();
             TextView tvpts = (TextView)findViewById(R.id.TVpts);
             tvpts.setText(String.valueOf(puntos) + " pts");
+            numBuenas++;
+            //lanzar el bonus
+            if(numBuenas >= 3 && demo == 0)
+            {
+                bonus = true;
+                numBuenas = 0;
+                multiplicador++;
+                if(eltime!=null)
+                    eltime.cancel();
+                eltime = null;
+            }
+            media=MediaPlayer.create(this,R.raw.win);
+            media.start();
         }
         else {
             ivs.setImageResource(R.drawable.incorrecta);
+            media=MediaPlayer.create(this,R.raw.fail);
+            media.start();
         }
         tvs.clearAnimation();
         tvs.startAnimation(papadeo);
@@ -416,7 +468,21 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                iniciar();
+                if(media != null)
+                    media.release();
+                if(mediaPrg != null)
+                    mediaPrg.release();
+
+                if(!finalizarPorTiempo) {
+                    if (bonus) {
+                        //pasamos al activity del bonus
+                        bonus = false;
+                        Intent resumen = new Intent(getApplicationContext(), prueba.class);
+                        startActivity(resumen);
+                    } else {
+                        iniciar();
+                    }
+                }
             }
         }, 3000);
         
@@ -473,8 +539,29 @@ public class TriviaActivity extends AppCompatActivity {
         tv.setTextColor(Color.rgb(77,41,3));
     }
 
+    private void reproducirPregunta(String audio)
+    {
+        Rext r = new Rext("Trivia");
+        String path = r.pathAudio(audio);
+        if(!path.equals(""))
+        {
+            try {
+                Uri myUri1 = Uri.parse(path);
+                mediaPrg = MediaPlayer.create(this, myUri1);
+                mediaPrg.start();
+            }catch (Exception e)
+            {
+                System.out.println("existe un error con el audio de la pregunta");
+            }
+        }
+    }
+
     @Override
     public void onBackPressed() {
+        if(eltime != null)
+            eltime.cancel();
+
+        eltime = null;
         this.finish();
     }
 

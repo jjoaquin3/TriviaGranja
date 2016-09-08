@@ -31,8 +31,8 @@ public class confActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
-        EditText et = (EditText) findViewById(R.id.ETvideo);
-        et.setText(modelo.getVideo());
+        /*EditText et = (EditText) findViewById(R.id.ETvideo);
+        et.setText(modelo.getVideo());*/
 
     }
 
@@ -83,7 +83,7 @@ public class confActivity extends AppCompatActivity {
         Toast.makeText(this,"Datos exportados",Toast.LENGTH_SHORT).show();
     }
 
-    public void BTv(View v)
+   /* public void BTv(View v)
     {
         String video = "";
         EditText et = (EditText) findViewById(R.id.ETvideo);
@@ -94,7 +94,7 @@ public class confActivity extends AppCompatActivity {
         //leer ruta video
         Rext r = new Rext("Trivia");
         System.out.println(r.ruta()+"/"+modelo.getVideo());
-    }
+    }*/
 
     public void BTt(View v)
     {

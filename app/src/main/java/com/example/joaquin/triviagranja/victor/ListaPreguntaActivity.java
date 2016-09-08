@@ -31,13 +31,13 @@ public class ListaPreguntaActivity extends AppCompatActivity {
 
         colocarDatosCategoria();
 
-        Button btn = (Button) findViewById(R.id.BTapplyCategoria);
+        /*Button btn = (Button) findViewById(R.id.BTapplyCategoria);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ApplyCategoria();
             }
-        });
+        });*/
 
 
     }
@@ -60,8 +60,8 @@ public class ListaPreguntaActivity extends AppCompatActivity {
             tv.setText("" + cat_actual.getNombre());
             tv.setTextSize(40);
 
-            et = (EditText) findViewById(R.id.ETnombreCategoria);
-            et.setText("" + cat_actual.getNombre());
+//            et = (EditText) findViewById(R.id.ETnombreCategoria);
+//            et.setText("" + cat_actual.getNombre());
             //imagen Menu
             /*et = (EditText) findViewById(R.id.ETimagenCategoria);
             et.setText("" + cat_actual.getImgp());*/
@@ -97,7 +97,7 @@ public class ListaPreguntaActivity extends AppCompatActivity {
         }
     }
 
-    private void ApplyCategoria()
+    /*private void ApplyCategoria()
     {
         Modelo md = new Modelo(this);
         try {
@@ -106,8 +106,8 @@ public class ListaPreguntaActivity extends AppCompatActivity {
 
             et = (EditText) findViewById(R.id.ETnombreCategoria);
             n = et.getText().toString();
-           /* et = (EditText) findViewById(R.id.ETimagenCategoria);
-            ip = et.getText().toString();*/
+           *//* et = (EditText) findViewById(R.id.ETimagenCategoria);
+            ip = et.getText().toString();*//*
 
             if(!n.equals("")) {
                 Categoria nv = new Categoria(n, "", "", "", "", cat_actual.getRowid());
@@ -125,7 +125,7 @@ public class ListaPreguntaActivity extends AppCompatActivity {
         finally {
             md.destruir();
         }
-    }
+    }*/
 
     public void addQuestion(View v)
     {

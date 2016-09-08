@@ -16,20 +16,21 @@
         android:background="@drawable/prueba"
         android:scaleType="fitXY"
         android:contentDescription="@string/IVdescripcion"
-        android:text="¿ Semuch Champey es un puente natural de piedra?"
         android:textSize="@dimen/Text_Size_Preguntas"
         android:textColor="@android:color/white"
         android:paddingTop="@dimen/Padding_Top_Pregunta"
         android:paddingStart="@dimen/Padding_Lateral_Pregunta"
         android:paddingEnd="@dimen/Padding_Lateral_Pregunta"
         android:gravity="center_horizontal"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:text="¿ Semuch Champey es un puente natural de piedra?" />
 
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/Margen_Izquierod_Respuestas"
-        android:layout_marginTop="@dimen/Margen_Top_Checks_Respuestas">
+        android:layout_marginTop="@dimen/Margen_Top_Checks_Respuestas"
+        android:layout_marginEnd="@dimen/Margen_Izquierod_Respuestas">
 
         <!--Respuesta 1-->
         <TableRow
@@ -48,13 +49,13 @@
                 android:contentDescription="@string/IVdescripcion" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/Text_Size_Respuestas"
                 android:id="@+id/TVrespuesta1"
                 android:gravity="center_vertical"
                 android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
-
+                android:paddingEnd="@dimen/Margen_paddingEnd_Respuestas"
                 />
 
         </TableRow>
@@ -76,12 +77,13 @@
                 android:contentDescription="@string/IVdescripcion" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/Text_Size_Respuestas"
                 android:id="@+id/TVrespuesta2"
                 android:gravity="center_vertical"
                 android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                android:paddingEnd="@dimen/Margen_paddingEnd_Respuestas"
                 />
 
         </TableRow>
@@ -103,12 +105,13 @@
                 android:contentDescription="@string/IVdescripcion" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/Text_Size_Respuestas"
                 android:id="@+id/TVrespuesta3"
                 android:gravity="center_vertical"
                 android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                android:paddingEnd="@dimen/Margen_paddingEnd_Respuestas"
                 />
 
         </TableRow>
@@ -130,12 +133,13 @@
                 android:contentDescription="@string/IVdescripcion" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/Text_Size_Respuestas"
                 android:id="@+id/TVrespuesta4"
                 android:gravity="center_vertical"
-                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas" />
+                android:layout_marginStart="@dimen/Margen_Entre_Checks_Respuestas"
+                android:paddingEnd="@dimen/Margen_paddingEnd_Respuestas" />
 
         </TableRow>
     </TableLayout>

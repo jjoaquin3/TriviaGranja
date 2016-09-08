@@ -128,7 +128,12 @@ public class Rext {
     public String pathAudio(String audio) {
         //Bitmap bitmap1 = BitmapFactory.decodeFile(this.album + "/image");
         //System.out.println(this.album + "/image");
-        return this.album +"/"+ audio;
+        File f = new File(this.album +"/"+ audio);
+        if(f.exists())
+        {
+            return f.getAbsolutePath();
+        }
+        return "";
     }
 
     public String ruta()

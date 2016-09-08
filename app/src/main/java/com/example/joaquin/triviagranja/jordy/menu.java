@@ -1,6 +1,7 @@
 package com.example.joaquin.triviagranja.jordy;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +15,22 @@ import com.example.joaquin.triviagranja.jose.conteo;
 
 public class menu extends AppCompatActivity {
     private int contador;
-
+    MediaPlayer media;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         contador=0;
+
+        Intent intent = getIntent();
+        int genero = intent.getIntExtra("genero",0);
+
+        if(genero == 0)
+            media= MediaPlayer.create(this,R.raw.bienvenida1);
+        else
+            media= MediaPlayer.create(this,R.raw.bienvenida2);
+
+        media.start();
     }
 
     public void Actbtn_menu_champey(View v){

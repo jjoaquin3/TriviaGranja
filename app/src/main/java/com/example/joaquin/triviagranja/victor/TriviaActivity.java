@@ -12,17 +12,18 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.joaquin.triviagranja.R;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -54,8 +55,8 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        //MainActivity.mp_fondo.setVolume(0.2f,0.2f);
-        MainActivity.mp_fondo.stop();
+        MainActivity.fondo.setVolume(0.8f,0.8f);
+        //MainActivity.fondo.stop();
         multiplicador = 0;
         puntos = 0;
 
@@ -147,6 +148,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         modelo.destruir();
+        MainActivity.fondo.setVolume(1.0f,1.0f);
     }
 
     private void calcularT()
@@ -476,8 +478,8 @@ public class TriviaActivity extends AppCompatActivity {
                     if (bonus) {
                         //pasamos al activity del bonus
                         bonus = false;
-//                        Intent resumen = new Intent(getApplicationContext(), prueba.class);
-//                        startActivity(resumen);
+                        Intent resumen = new Intent(getApplicationContext(), prueba.class);
+                        startActivity(resumen);
                     } else {
                         iniciar();
                     }
@@ -557,16 +559,10 @@ public class TriviaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        try
-        {
-            if(eltime != null)
-                eltime.cancel();
-            eltime = null;
-            MainActivity.mp_fondo.start();
-        } catch (Exception e)
-        {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
+        if(eltime != null)
+            eltime.cancel();
+
+        eltime = null;
         this.finish();
     }
 

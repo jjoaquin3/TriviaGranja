@@ -10,6 +10,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.joaquin.triviagranja.MainActivity;
 import com.example.joaquin.triviagranja.R;
 import com.example.joaquin.triviagranja.jose.conteo;
 
@@ -29,8 +31,17 @@ public class menu extends AppCompatActivity {
             media= MediaPlayer.create(this,R.raw.bienvenida1);
         else
             media= MediaPlayer.create(this,R.raw.bienvenida2);
+        reproducirBienvenida();
+    }
 
+    private void reproducirBienvenida()
+    {
         media.start();
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer arg0) {
+                MainActivity.mp_fondo.start();
+            }
+        });
     }
 
     public void Actbtn_menu_champey(View v){

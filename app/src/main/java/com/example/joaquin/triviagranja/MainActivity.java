@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
                                 pantalla_menu.putExtra("genero",0);
+                                mp_fondo.pause();
                                 startActivity(pantalla_menu);
                             }
                         })
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
                                 pantalla_menu.putExtra("genero",1);
+                                mp_fondo.pause();
                                 startActivity(pantalla_menu);
                             }
                         })

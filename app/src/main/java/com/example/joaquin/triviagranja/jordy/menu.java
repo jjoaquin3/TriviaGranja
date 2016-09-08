@@ -67,7 +67,7 @@ public class menu extends AppCompatActivity {
 
     public void Actbtn_menu_laguna_lachua(View v){
         MiAnimacion(v);
-        Conteo("laguna de lachua",v);
+        Conteo("laguna de lachuá",v);
     }
 
     public void Actbtn_menu_laguna_brava(View v){

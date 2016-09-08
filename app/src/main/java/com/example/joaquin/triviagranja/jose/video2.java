@@ -24,7 +24,7 @@ public class video2 extends AppCompatActivity {
         setContentView(R.layout.activity_video2);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Rext j = new Rext("Trivia");
-        this.startVideo(j.ruta()+"/video1.mp4");
+        this.startVideo(j.ruta()+"/video.mp4");
     }
 
     private void startVideo(String ruta)

@@ -5,7 +5,9 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.VideoView;
 
 import com.example.joaquin.triviagranja.MainActivity;
@@ -60,4 +62,25 @@ public class video2 extends AppCompatActivity {
         }
         this.finish();
     }
+
+    public void onPause() {
+        System.exit(0);
+        super.onPause();
+    }
+
+//    @Override
+//    protected void onUserLeaveHint() {
+//        try
+//        {
+//            if(MainActivity.mp_fondo.isPlaying())
+//                MainActivity.mp_fondo.stop();
+//        } catch (Exception e)
+//        {
+//            Log.v(getString(R.string.app_name), e.getMessage());
+//        }
+//        this.finish();
+//        //Toast.makeText(MainActivity.this, "Home button pressed", Toast.LENGTH_LONG).show();
+//        super.onUserLeaveHint();
+//    }
+
 }

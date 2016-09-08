@@ -40,7 +40,7 @@ public class menu extends AppCompatActivity {
         media.start();
         media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer arg0) {
-                MainActivity.mp_fondo.start();
+                MainActivity.mp_fondo.setVolume(MainActivity.volumenmax,MainActivity.volumenmax);
             }
         });
     }
@@ -95,21 +95,6 @@ public class menu extends AppCompatActivity {
         Conteo("cartagena",v);
     }
 
-    public void Actbtn_return(View v){
-        try
-        {
-            if(media.isPlaying())
-            {
-                media.stop();
-                media.reset();
-                MainActivity.mp_fondo.start();
-            }
-        } catch (Exception e)
-        {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
-        this.finish();
-    }
 
     private void MiAnimacion( View v){
         v.setEnabled(false);
@@ -176,8 +161,8 @@ public class menu extends AppCompatActivity {
         bloquear = (Button)findViewById(R.id.btn_menu_santo_domingo);
         bloquear.setEnabled(false);
     }
-    @Override
-    public void onBackPressed() {
+
+    public void Actbtn_return(View v){
         try
         {
             if(media.isPlaying())
@@ -193,5 +178,23 @@ public class menu extends AppCompatActivity {
         this.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        this.finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!this.isFinishing()){
+            MainActivity.mp_fondo.pause();
+        media.stop();
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        MainActivity.mp_fondo.start();
+    }
 }
 

@@ -179,7 +179,6 @@ public class resultados extends FragmentActivity {
                         MainActivity.mp_fondo.start();
                     return new resumen_ganador();
             }
-
             return null;
         }
 
@@ -188,7 +187,5 @@ public class resultados extends FragmentActivity {
             // get item count - equal to number of tabs
             return 2;
         }
-
     }
-
 }

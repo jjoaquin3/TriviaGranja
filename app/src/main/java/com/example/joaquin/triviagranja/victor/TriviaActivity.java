@@ -564,12 +564,12 @@ public class TriviaActivity extends AppCompatActivity {
             if(eltime != null)
                 eltime.cancel();
             eltime = null;
-            MainActivity.mp_fondo.start();
+            //if(!MainActivity.mp_fondo.isPlaying())
+                //MainActivity.mp_fondo.start();
         } catch (Exception e)
         {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
         this.finish();
     }
-
 }

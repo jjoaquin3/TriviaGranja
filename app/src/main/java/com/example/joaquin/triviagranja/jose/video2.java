@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.VideoView;
 
@@ -28,20 +29,35 @@ public class video2 extends AppCompatActivity {
     {
         video = (VideoView) findViewById(R.id.videoView_video);
         video.setVideoPath(ruta);
-        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mediaPlayer) {
-                            mediaPlayer.setLooping(true);
-                    }
-                }
-        );
+        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+        {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer)
+            {
+                mediaPlayer.setLooping(true);
+            }
+        });
         video.start();
     }
 
     public void video2_btnTouch(View v)
     {
         video.stopPlayback();
-        MainActivity.fondo.start();
+        MainActivity.mp_fondo.start();
+        this.finish();
+    }
+
+    public void onBackPressed()
+    {
+        try
+        {
+            if(video.isPlaying())
+                video.stopPlayback();
+            MainActivity.mp_fondo.start();
+        } catch (Exception e)
+        {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
         this.finish();
     }
 }

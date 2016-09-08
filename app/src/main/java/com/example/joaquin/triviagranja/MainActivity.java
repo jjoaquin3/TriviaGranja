@@ -8,9 +8,11 @@ import com.example.joaquin.triviagranja.victor.TriviaActivity;
 import com.example.joaquin.triviagranja.victor.UsuarioActivity;
 import com.example.joaquin.triviagranja.victor.Rext;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     public void main_btnPlay(View v)
     {
         System.out.println("----------> Acción del boton Play - Main");
-        Intent pantalla_menu  = new Intent(this, menu.class);
-        startActivity(pantalla_menu);
+        AlertDialog tmp = createSimpleDialog();
+        tmp.show();
     }
 
     public void main_btnDemo(View v)
@@ -84,6 +86,34 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         fondo.stop();
         this.finish();
+    }
+
+    private AlertDialog createSimpleDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Elije tu género")
+                .setMessage("¿Eres Hombre o Mujer?")
+                .setPositiveButton("Hombre",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
+                                pantalla_menu.putExtra("genero",0);
+                                startActivity(pantalla_menu);
+                            }
+                        })
+                .setNegativeButton("Mujer",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent pantalla_menu  = new Intent(getApplicationContext(), menu.class);
+                                pantalla_menu.putExtra("genero",1);
+                                startActivity(pantalla_menu);
+                            }
+                        })
+                .setCancelable(true);
+
+        return builder.create();
     }
 
 }

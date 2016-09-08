@@ -55,8 +55,8 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        //MainActivity.fondo.setVolume(0.2f,0.2f);
-        MainActivity.fondo.stop();
+        MainActivity.fondo.setVolume(0.8f,0.8f);
+        //MainActivity.fondo.stop();
         multiplicador = 0;
         puntos = 0;
 
@@ -148,6 +148,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         modelo.destruir();
+        MainActivity.fondo.setVolume(1.0f,1.0f);
     }
 
     private void calcularT()

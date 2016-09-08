@@ -47,6 +47,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2">
 
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:fillViewport="false">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -104,6 +117,9 @@
                         android:id="@+id/ETaudioPregunta"
                         android:background="@android:color/holo_orange_light"
                         />
+
+                    </LinearLayout>
+                </ScrollView>
 
                 </LinearLayout>
 

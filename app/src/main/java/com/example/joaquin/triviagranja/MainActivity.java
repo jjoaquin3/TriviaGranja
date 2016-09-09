@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         try
         {
             mp_fondo.stop();
-            mp_fondo.reset();
+            //mp_fondo.reset();
         } catch (Exception e)
         {
             Log.v(getString(R.string.app_name), e.getMessage());

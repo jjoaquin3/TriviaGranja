@@ -20,10 +20,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.joaquin.triviagranja.jordy.mi_bonus;
 
 import com.example.joaquin.triviagranja.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -201,9 +204,21 @@ public class TriviaActivity extends AppCompatActivity {
                             prgSeleccionadas.add(auxa);
                             preguntas[(numCategorias*k)+i] = pgrtmp;
                         }
-                    }else{ flag = false; System.out.println("no hay suficientes preguntas");}
-                }else{ flag = false; System.out.println("categoria mala");}
-            }else { flag = false; System.out.println("una categoria null");}
+                    }else{ flag = false; touch_active = false; System.out.println("no hay suficientes preguntas");
+                        Toast.makeText(this, "no hay suficientes preguntas válidas para la categoria " + categorias[i].getNombre(),Toast.LENGTH_LONG);
+                        if(eltime!= null)
+                            eltime.cancel();
+                        eltime = null;
+                        finAct();
+                    }
+                }else{ flag = false; touch_active = false; System.out.println("categoria mala");
+                    Toast.makeText(this, "no hay suficientes preguntas válidas para la categoria " + categorias[i].getNombre(),Toast.LENGTH_LONG);
+                    if(eltime!= null)
+                        eltime.cancel();
+                    eltime = null;
+                    finAct();
+                }
+            }else { flag = false; touch_active = false; System.out.println("una categoria null");}
         }
     }
 
@@ -244,9 +259,9 @@ public class TriviaActivity extends AppCompatActivity {
                         if (posTmp >= (limitecorrectas + limiteincorrectas)) posTmp = 0;
                         aux++;
                     }
-                } else { flag = false; System.out.println("No hay suficientes respuestas"); }
-            } else { flag = false; System.out.println("Respuestas es null"); }
-        }else { flag = false; System.out.println("Pregunta es null"); }
+                } else { flag = false; touch_active = false; System.out.println("No hay suficientes respuestas"); }
+            } else { flag = false; touch_active = false; System.out.println("Respuestas es null"); }
+        }else { flag = false; touch_active = false; System.out.println("Pregunta es null"); }
     }
 
     private void iniciar()
@@ -305,8 +320,8 @@ public class TriviaActivity extends AppCompatActivity {
                     tv3.setText(respuestas[2].getTexto());
                     tv4.setText(respuestas[3].getTexto());
                     touch_active = true;
-                }else{ System.out.println("ha existido un error"); }
-            }else{ System.out.println("ha existido un error"); }
+                }else{ System.out.println("ha existido un error en recuperar respuesta");  }
+            }else{ System.out.println("ha existido un error en recuperar pregunta");  }
         }
         else
         {
@@ -317,9 +332,9 @@ public class TriviaActivity extends AppCompatActivity {
             }
             else {
                 //pasar al activity de respuestas
-                /*if(eltime!= null)
+                if(eltime!= null)
                     eltime.cancel();
-                eltime = null;*/
+                eltime = null;
                 finAct();
             }
         }
@@ -391,9 +406,9 @@ public class TriviaActivity extends AppCompatActivity {
                 bonus = true;
                 numBuenas = 0;
                 multiplicador++;
-                /*if(eltime!=null)
+                if(eltime!=null)
                     eltime.cancel();
-                eltime = null;*/
+                eltime = null;
             }
             media=MediaPlayer.create(this,R.raw.win);
             media.start();
@@ -477,10 +492,12 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(media != null)
-                    media.release();
-                if(mediaPrg != null)
-                    mediaPrg.release();
+                if(media != null) {
+                        media.stop();
+                }
+                if(mediaPrg != null) {
+                        mediaPrg.stop();
+                }
 
                 if(!finalizarPorTiempo) {
                     if (bonus) {
@@ -561,8 +578,12 @@ public class TriviaActivity extends AppCompatActivity {
         {
             try {
                 Uri myUri1 = Uri.parse(path);
-                mediaPrg = MediaPlayer.create(this, myUri1);
-                mediaPrg.start();
+                File f = new File(myUri1.getPath());
+                if(f.exists())
+                {
+                    mediaPrg = MediaPlayer.create(this, myUri1);
+                    mediaPrg.start();
+                }
             }catch (Exception e)
             {
                 System.out.println("existe un error con el audio de la pregunta");
@@ -665,6 +686,5 @@ public class TriviaActivity extends AppCompatActivity {
         iniciar();
 
     }
-
 
 }

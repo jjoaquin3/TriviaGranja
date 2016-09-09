@@ -18,7 +18,7 @@ import java.nio.channels.FileChannel;
  */
 public class Rext {
 
-    private String album = null;
+    public String album = null;
 
     public Rext(String dir)
     {

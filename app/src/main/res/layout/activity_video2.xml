@@ -9,6 +9,7 @@
     <VideoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:id="@+id/videoView_video" />
 
     <Button

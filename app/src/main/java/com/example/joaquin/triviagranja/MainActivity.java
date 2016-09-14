@@ -142,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
             //Insert code for HOME  key Event
             mp_fondo.setVolume(volumen,volumen);
         }
+        else
+        {
+            mp_fondo.stop();
+        }
     }
 
     @Override
@@ -155,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy()
     {
-        super.onDestroy();
         mp_fondo.stop();
+        super.onDestroy();
     }
 
     private AlertDialog createSimpleDialog() {

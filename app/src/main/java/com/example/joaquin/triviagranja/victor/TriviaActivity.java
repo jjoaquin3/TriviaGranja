@@ -218,15 +218,7 @@ public class TriviaActivity extends AppCompatActivity {
                     eltime = null;
                     finAct();
                 }
-            }else { flag = false; touch_active = false; System.out.println("una categoria null");
-
-                Toast.makeText(this, "la categoria no es valida",Toast.LENGTH_LONG);
-                if(eltime!= null)
-                    eltime.cancel();
-                eltime = null;
-                finAct();
-
-            }
+            }else { flag = false; touch_active = false; System.out.println("una categoria null");}
         }
     }
 
@@ -267,25 +259,9 @@ public class TriviaActivity extends AppCompatActivity {
                         if (posTmp >= (limitecorrectas + limiteincorrectas)) posTmp = 0;
                         aux++;
                     }
-                } else { flag = false; touch_active = false; System.out.println("No hay suficientes respuestas");
-                    Toast.makeText(this, "No hay suficientes respuestas  ",Toast.LENGTH_LONG);
-                    if(eltime!= null)
-                        eltime.cancel();
-                    eltime = null;
-                    finAct();
-                }
-            } else { flag = false; touch_active = false; System.out.println("Respuestas es null");
-                Toast.makeText(this, "Respuestas es null  ",Toast.LENGTH_LONG);
-                if(eltime!= null)
-                    eltime.cancel();
-                eltime = null;
-                finAct();}
-        }else { flag = false; touch_active = false; System.out.println("Pregunta es null");
-            Toast.makeText(this, "Pregunta es null ",Toast.LENGTH_LONG);
-            if(eltime!= null)
-                eltime.cancel();
-            eltime = null;
-            finAct();}
+                } else { flag = false; touch_active = false; System.out.println("No hay suficientes respuestas"); }
+            } else { flag = false; touch_active = false; System.out.println("Respuestas es null"); }
+        }else { flag = false; touch_active = false; System.out.println("Pregunta es null"); }
     }
 
     private void iniciar()

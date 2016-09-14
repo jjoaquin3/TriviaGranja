@@ -60,20 +60,16 @@ public class resultados extends FragmentActivity {
                      reproducirSonidoResultados(R.raw.gabacha);
                  }else if (puntaje>=900 && puntaje<=1100) {
                      reproducirSonidoResultados(R.raw.premio_2_audifonos);
-                 }else if (puntaje>=1200 && puntaje<=1500){
+                 }else {// (puntaje>=1200){
                      reproducirSonidoResultados(R.raw.premio_4_selfie);
-                 } else {
-                     reproducirSonidoResultados(R.raw.premio_1_nada);
                  }
              }
             }
-
             // This method will be invoked when the current page is scrolled
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 // Code goes here
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
                 // Code goes here
@@ -144,20 +140,15 @@ public class resultados extends FragmentActivity {
                 txt.setTextSize(80);
                 txt.setText("Audiculares");
                 premio.setImageResource(R.drawable.ganador_premio4);
-            }else if (conteo>=1200 && conteo<=1500){
+            }else{// (conteo>=1200){
                 txt.setTextSize(80);
                 txt.setText("selfie stick");
-                premio.setImageResource(R.drawable.main_logo);
-            }else{
-                txt.setTextSize(80);
-                txt.setText("Gracias por participar");
                 premio.setImageResource(R.drawable.main_logo);
             }
         }
     }
 
     public static class resumen_punteo extends Fragment {
-
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_resumen_punteo, container, false);

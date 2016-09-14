@@ -204,20 +204,8 @@ public class TriviaActivity extends AppCompatActivity {
                             prgSeleccionadas.add(auxa);
                             preguntas[(numCategorias*k)+i] = pgrtmp;
                         }
-                    }else{ flag = false; touch_active = false; System.out.println("no hay suficientes preguntas");
-                        Toast.makeText(this, "no hay suficientes preguntas válidas para la categoria " + categorias[i].getNombre(),Toast.LENGTH_LONG);
-                        if(eltime!= null)
-                            eltime.cancel();
-                        eltime = null;
-                        finAct();
-                    }
-                }else{ flag = false; touch_active = false; System.out.println("categoria mala");
-                    Toast.makeText(this, "no hay suficientes preguntas válidas para la categoria " + categorias[i].getNombre(),Toast.LENGTH_LONG);
-                    if(eltime!= null)
-                        eltime.cancel();
-                    eltime = null;
-                    finAct();
-                }
+                    }else{ flag = false; touch_active = false; System.out.println("no hay suficientes preguntas"); }
+                }else{ flag = false; touch_active = false; System.out.println("categoria mala"); }
             }else { flag = false; touch_active = false; System.out.println("una categoria null");}
         }
     }
@@ -320,8 +308,24 @@ public class TriviaActivity extends AppCompatActivity {
                     tv3.setText(respuestas[2].getTexto());
                     tv4.setText(respuestas[3].getTexto());
                     touch_active = true;
-                }else{ System.out.println("ha existido un error en recuperar respuesta");  }
-            }else{ System.out.println("ha existido un error en recuperar pregunta");  }
+                }else{ System.out.println("ha existido un error en recuperar respuesta");
+
+                    Toast.makeText(this, "no hay suficientes preguntas válidas ",Toast.LENGTH_LONG);
+                    if(eltime!= null)
+                        eltime.cancel();
+                    eltime = null;
+                    finAct();
+
+                }
+            }else{ System.out.println("ha existido un error en recuperar pregunta");
+
+                Toast.makeText(this, "no hay suficientes respuestas válidas ",Toast.LENGTH_LONG);
+                if(eltime!= null)
+                    eltime.cancel();
+                eltime = null;
+                finAct();
+
+            }
         }
         else
         {

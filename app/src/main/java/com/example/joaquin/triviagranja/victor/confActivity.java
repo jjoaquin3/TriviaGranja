@@ -81,14 +81,6 @@ public class confActivity extends AppCompatActivity {
         r.imp(this,"trivia.db");
         Toast.makeText(this,"Datos importados",Toast.LENGTH_SHORT).show();
 
-
-       /*System.out.println("importar");
-        try {
-            read("1");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }*/
     }
 
     public void BTex(View v)
@@ -123,46 +115,4 @@ public class confActivity extends AppCompatActivity {
 
         Toast.makeText(this,"Tiempo de juego se ha actualizado",Toast.LENGTH_SHORT).show();
     }
-
-    /*public boolean read(String key) throws IOException {
-        Rext r = new Rext("Trivia");
-        System.out.println(r.album+ "/datos.xlsx");
-        File inputFile = new File(r.album + "/datos.xlsx");
-        if(inputFile.exists()){
-            System.out.println("si existe");
-            Workbook w;
-            try {
-                w = Workbook.getWorkbook(inputWorkbook);
-                // Get the first sheet
-                Sheet sheet = w.getSheet(0);
-                // Loop over column and lines
-                for (int j = 0; j < sheet.getRows(); j++) {
-                    Cell cell = sheet.getCell(0, j);
-                    if(cell.getContents().equalsIgnoreCase(key)){
-                        for (int i = 0; i < sheet.getColumns(); i++) {
-                            Cell cel = sheet.getCell(i, j);
-                            //resultSet.add(cel.getContents());
-                            System.out.println("row " + j + " col " + i + " " + cel.getContents());
-                        }
-                    }
-                    continue;
-                }
-            } catch (BiffException e) {
-                e.printStackTrace();
-                System.out.println("bif " +e.getMessage());
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("eee " +e.getMessage());
-            }
-        }
-        else
-        {
-            resultSet.add("File not found..!");
-        }
-        if(resultSet.size()==0){
-            resultSet.add("Data not found..!");
-        }
-        return resultSet;
-    }*/
-
 }

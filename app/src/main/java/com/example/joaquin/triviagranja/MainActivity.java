@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         playlist.add(R.raw.kevin_macleod_master_of_the_feast);
         playlist.add(R.raw.michael_curtis_no);
         mp_fondo = new MediaPlayer();
+        mp_fondo.setVolume(volumenmax,volumenmax);
         this.playSong();
     }
 
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void  onDestroy()
+    protected void onDestroy()
     {
         super.onDestroy();
         mp_fondo.stop();

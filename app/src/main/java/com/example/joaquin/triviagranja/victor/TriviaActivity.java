@@ -692,6 +692,14 @@ public class TriviaActivity extends AppCompatActivity {
                     public void onFinish() {
                         try {
                             touch_active = false;
+                            
+                            if(media != null) {
+                                media.stop();
+                            }
+                            if(mediaPrg != null) {
+                                mediaPrg.stop();
+                            }
+
                             finalizarPorTiempo = true;
                             tvtime.setText("Fin!");
                             finAct();

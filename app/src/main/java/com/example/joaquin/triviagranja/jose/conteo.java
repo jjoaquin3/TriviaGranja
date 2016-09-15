@@ -43,7 +43,7 @@ public class conteo extends AppCompatActivity {
 
         imageView_conteo_numeros.startAnimation(fadeIn);
 
-        MainActivity.mp_fondo.pause();
+        //MainActivity.mp_fondo.pause();
         mp_fondo_conteo =MediaPlayer.create(conteo.this,R.raw.rsg);
         mp_fondo_conteo.start();
     }
@@ -132,7 +132,7 @@ public class conteo extends AppCompatActivity {
             inicio.putExtra("categoria3", extras.getString("categoria3"));
             int d = 0;
             inicio.putExtra("demo",d);
-            MainActivity.mp_fondo.start();
+            //MainActivity.mp_fondo.start();
             startActivity(inicio);
             this.finish();
         }

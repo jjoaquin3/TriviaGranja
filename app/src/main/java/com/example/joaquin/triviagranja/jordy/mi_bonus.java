@@ -172,6 +172,7 @@ public class mi_bonus extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        MainActivity.mp_fondo.pause();
         try
         {
             if(lee_pregunta.isPlaying())

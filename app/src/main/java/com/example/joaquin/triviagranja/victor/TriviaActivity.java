@@ -177,7 +177,7 @@ public class TriviaActivity extends AppCompatActivity {
                 startActivity(resumen);
                 TriviaActivity.this.finish();
             }
-        }, 1500);
+        }, 1000);
     }
 
     private void recuperar_info()
@@ -251,7 +251,7 @@ public class TriviaActivity extends AppCompatActivity {
         }else { flag = false; touch_active = false; System.out.println("Pregunta es null"); }
     }
 
-    private void iniciar()
+    private void iniciar() throws Exception
     {
         //escribir puntos
         numPregunta--;
@@ -355,7 +355,12 @@ public class TriviaActivity extends AppCompatActivity {
                             //desabilitar el touch
                             if(touch_active) {
                                 touch_active = false;
-                                RunAnimation(tv, TVid, IVid, Rnum);
+                                try {
+                                    RunAnimation(tv, TVid, IVid, Rnum);
+                                }catch (Exception e)
+                                {
+                                    System.out.println(e.getMessage());
+                                }
                             }
                             break;
                         }
@@ -372,7 +377,7 @@ public class TriviaActivity extends AppCompatActivity {
         }
     }
 
-    private void RunAnimation(TextView tvs, int TVid, int IVid, int Rnum)
+    private void RunAnimation(TextView tvs, int TVid, int IVid, int Rnum)throws Exception
     {
         //recuperar todos los View Trivia
         final ImageView iv1 = (ImageView)findViewById(R.id.IVrespuesta1);
@@ -514,7 +519,12 @@ public class TriviaActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.animacion2, R.anim.animacion1);
 
                     } else {
-                        iniciar();
+                        try {
+                            iniciar();
+                        }catch(Exception e)
+                        {
+                            System.out.println(e.getMessage());
+                        }
                     }
                 }
             }
@@ -656,37 +666,49 @@ public class TriviaActivity extends AppCompatActivity {
         TextView tvpts = (TextView)findViewById(R.id.TVpts);
         tvpts.setText(String.valueOf(puntos) + " pts");
         if (demo == 0) {
-            eltime = new CountDownTimer(limitetiempo, 1000) {
-                TextView tvtime = (TextView) findViewById(R.id.TVtimer);
+            if (this.numPregunta > 0) {
+                eltime = new CountDownTimer(limitetiempo, 1000) {
+                    TextView tvtime = (TextView) findViewById(R.id.TVtimer);
 
-                public void onTick(long millisUntilFinished) {
-                    limitetiempo = millisUntilFinished;
-                    String texto = "";
-                    long mili = millisUntilFinished / 1000;
-                    int minutos = (int) mili / 60;
-                    int segundos = (int) mili - (minutos * 60);
-                    if (minutos > 0) {
-                        texto += String.valueOf(minutos) + " : ";
-                        if (segundos < 10)
-                            texto += "0";
-                    } else {
-                        if (segundos < 10)
-                            tvtime.setTextColor(Color.RED);
+                    public void onTick(long millisUntilFinished) {
+                        limitetiempo = millisUntilFinished;
+                        String texto = "";
+                        long mili = millisUntilFinished / 1000;
+                        int minutos = (int) mili / 60;
+                        int segundos = (int) mili - (minutos * 60);
+                        if (minutos > 0) {
+                            texto += String.valueOf(minutos) + " : ";
+                            if (segundos < 10)
+                                texto += "0";
+                        } else {
+                            if (segundos < 10)
+                                tvtime.setTextColor(Color.RED);
+                        }
+                        texto += String.valueOf(segundos);
+
+                        tvtime.setText(texto);
                     }
-                    texto += String.valueOf(segundos);
 
-                    tvtime.setText(texto);
-                }
-
-                public void onFinish() {
-                    touch_active = false;
-                    finalizarPorTiempo = true;
-                    tvtime.setText("Fin!");
-                    finAct();
-                }
-            }.start();
+                    public void onFinish() {
+                        try {
+                            touch_active = false;
+                            finalizarPorTiempo = true;
+                            tvtime.setText("Fin!");
+                            finAct();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                }.start();
+            }
         }
-        iniciar();
+
+        try {
+            iniciar();
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
 
     }
 

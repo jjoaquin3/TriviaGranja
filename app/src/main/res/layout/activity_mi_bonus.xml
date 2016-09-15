@@ -115,13 +115,14 @@
                         android:visibility="visible"
                          />
 
-                    <TextView
+                    <Button
                         android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:textSize="40sp"
                         android:id="@+id/bonus_IVrespuesta1_1"
                         android:gravity="center_vertical"
                         android:onClick="ask1"
+                        android:background="@android:color/transparent"
                         />
 
 
@@ -154,13 +155,14 @@
                             android:visibility="visible"
                             />
 
-                        <TextView
+                        <Button
                             android:layout_width="150sp"
                             android:layout_height="wrap_content"
                             android:textSize="40sp"
                             android:id="@+id/bonus_IVrespuesta2_2"
                             android:gravity="center_vertical"
                             android:onClick="ask2"
+                            android:background="@android:color/transparent"
                             />
 
 

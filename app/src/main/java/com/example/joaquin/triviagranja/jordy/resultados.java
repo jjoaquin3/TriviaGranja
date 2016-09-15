@@ -130,19 +130,19 @@ public class resultados extends FragmentActivity {
                 premio.setImageResource(R.drawable.main_logo);
             }else if (conteo>=400 && conteo<=600){
                 txt.setTextSize(80);
-                txt.setText("Bolsa Ecologica");
+                txt.setText("Bolsa De la Granja");
                 premio.setImageResource(R.drawable.ganador_premio2);
             }else if (conteo>=700 && conteo<=800){
                 txt.setTextSize(80);
-                txt.setText("Gabacha");
+                txt.setText("Gabacha De la Granja");
                 premio.setImageResource(R.drawable.ganador_premio3);
             }else if (conteo>=900 && conteo<=1100) {
                 txt.setTextSize(80);
-                txt.setText("Audiculares");
+                txt.setText("Audífonos De la Granja");
                 premio.setImageResource(R.drawable.ganador_premio4);
             }else{// (conteo>=1200){
                 txt.setTextSize(80);
-                txt.setText("selfie stick");
+                txt.setText("Selfie Stick De la Granja");
                 premio.setImageResource(R.drawable.main_logo);
             }
         }

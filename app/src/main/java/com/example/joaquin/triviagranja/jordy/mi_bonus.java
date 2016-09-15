@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.joaquin.triviagranja.MainActivity;
@@ -26,20 +27,22 @@ public class mi_bonus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_bonus);
-        TextView tv;
+        Button tv;
+        TextView tv_t;
         Typeface TF;
 
         Bundle extras = getIntent().getExtras();
         TF = Typeface.createFromAsset(getAssets(),"font/puntosynumeros.ttf");
-        tv = (TextView)findViewById(R.id.bonus_TVpts);
-        tv.setTypeface(TF);
+        tv_t = (TextView)findViewById(R.id.bonus_TVpts);
+        tv_t.setTypeface(TF);
         puntosG=extras.getInt("p0");
         logica(extras.getInt("p1"));
-        tv.setText("+"+ puntosG.toString() +" pts");
-        tv = (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+        tv_t.setText("+"+ puntosG.toString() +" pts");
+
+        tv = (Button)findViewById(R.id.bonus_IVrespuesta1_1);
         tv.setTypeface(TF);
         tv.setTextColor(Color.rgb(77,41,3));
-        tv = (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+        tv = (Button)findViewById(R.id.bonus_IVrespuesta2_2);
         tv.setTypeface(TF);
         tv.setTextColor(Color.rgb(77,41,3));
     }
@@ -47,62 +50,63 @@ public class mi_bonus extends AppCompatActivity {
 
 
     private void logica(int i){
-        TextView tv;
+        Button tv;
+        TextView tv_t;
 
         switch (i) {
             case 1:
-                tv= (TextView)findViewById(R.id.mitex_bonus_p);
-                tv.setBackgroundResource(R.drawable.bonus_p1);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+                tv_t= (TextView)findViewById(R.id.mitex_bonus_p);
+                tv_t.setBackgroundResource(R.drawable.bonus_p1);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
                 tv.setWidth(100);
                 tv.setBackgroundResource(R.drawable.bonus_lit);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
                 tv.setBackgroundResource(R.drawable.bonus_g);//correcta
                 lee_pregunta =MediaPlayer.create(this,R.raw.bonus2);
                 lee_pregunta.start();
                 AskCorrecta=false;
                 break;
             case 2:
-                tv= (TextView)findViewById(R.id.mitex_bonus_p);
-                tv.setBackgroundResource(R.drawable.bonus_p2);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+                tv_t= (TextView)findViewById(R.id.mitex_bonus_p);
+                tv_t.setBackgroundResource(R.drawable.bonus_p2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
                 tv.setBackgroundResource(R.drawable.bonus_ml);//correcta
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
                 tv.setBackgroundResource(R.drawable.bonus_lit);
                 lee_pregunta =MediaPlayer.create(this,R.raw.bonus5);
                 lee_pregunta.start();
                 AskCorrecta=true;
                 break;
             case 3:
-                tv= (TextView)findViewById(R.id.mitex_bonus_p);
-                tv.setBackgroundResource(R.drawable.bonus_p3);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+                tv_t= (TextView)findViewById(R.id.mitex_bonus_p);
+                tv_t.setBackgroundResource(R.drawable.bonus_p3);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
                 tv.setText("5 años");
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
                 tv.setText("10 años");//correcta
                 lee_pregunta =MediaPlayer.create(this,R.raw.bonus1);
                 lee_pregunta.start();
                 AskCorrecta=false;
                 break;
             case 4:
-                tv= (TextView)findViewById(R.id.mitex_bonus_p);
-                tv.setBackgroundResource(R.drawable.bonus_p4);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+                tv_t= (TextView)findViewById(R.id.mitex_bonus_p);
+                tv_t.setBackgroundResource(R.drawable.bonus_p4);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
                 tv.setText("Cierto");//correcta
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
                 tv.setText("Falso");
                 lee_pregunta =MediaPlayer.create(this,R.raw.bonus3);
                 lee_pregunta.start();
                 AskCorrecta=true;
                 break;
             case 5:
-                tv= (TextView)findViewById(R.id.mitex_bonus_p);
-                tv.setBackgroundResource(R.drawable.bonus_p5);
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+                tv_t= (TextView)findViewById(R.id.mitex_bonus_p);
+                tv_t.setBackgroundResource(R.drawable.bonus_p5);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
                 tv.setText("Falso");
-                tv= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+                tv= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
                 tv.setText("Cierto");//correcta
-               lee_pregunta =MediaPlayer.create(this,R.raw.bonus4);
+                lee_pregunta =MediaPlayer.create(this,R.raw.bonus4);
                 lee_pregunta.start();
                 AskCorrecta=false;
                 break;
@@ -110,10 +114,12 @@ public class mi_bonus extends AppCompatActivity {
     }
 
     public void ask1(View v){//true
-        TextView tv3= (TextView)findViewById(R.id.bonus_IVrespuesta2_2);
+        Button tv3= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
+        v.setEnabled(false);
         tv3.setEnabled(false);
         colocarAnimacion(v);
         ImageView tv = (ImageView)findViewById(R.id.bonus_IVrespuesta1);
+        tv.setEnabled(false);
         MediaPlayer sonido;
         if(AskCorrecta){
             sonido =MediaPlayer.create(this,R.raw.win);
@@ -128,10 +134,12 @@ public class mi_bonus extends AppCompatActivity {
         finalizar(v);
     }
     public void ask2(View v){//false
-        TextView tv3= (TextView)findViewById(R.id.bonus_IVrespuesta1_1);
+        Button tv3= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
+        v.setEnabled(false);
         tv3.setEnabled(false);
         colocarAnimacion(v);
         ImageView tv = (ImageView)findViewById(R.id.bonus_IVrespuesta2_1);
+        tv.setEnabled(false);
         MediaPlayer sonido;
         if(!AskCorrecta){
             sonido =MediaPlayer.create(this,R.raw.win);

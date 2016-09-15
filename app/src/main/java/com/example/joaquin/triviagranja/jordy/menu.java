@@ -1,6 +1,7 @@
 package com.example.joaquin.triviagranja.jordy;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.joaquin.triviagranja.MainActivity;
@@ -23,6 +25,12 @@ public class menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        TextView tv;
+        Typeface TF;
+
+        TF = Typeface.createFromAsset(getAssets(),"font/titulos.otf");
+        tv = (TextView)findViewById(R.id.tex_menu_titulo);
+        tv.setTypeface(TF);
         contador=0;
 
         Intent intent = getIntent();

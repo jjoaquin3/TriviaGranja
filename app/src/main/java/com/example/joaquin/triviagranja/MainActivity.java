@@ -55,13 +55,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         modelo.destruir();
-        sonidoStart();
+        sonidoStartSolo();
     }
 
-    private void sonidoStart()
+    private void sonidoStartSolo()
+    {
+        mp_fondo = new MediaPlayer();
+        mp_fondo = MediaPlayer.create(MainActivity.this, R.raw.fondo_granja);
+        mp_fondo.setVolume(volumenmax,volumenmax);
+        mp_fondo.setLooping(true);
+        mp_fondo.start();
+    }
+
+    /*private void sonidoStart()
     {
         playlist = new ArrayList<>();
-        playlist.add(R.raw.kevin_macleod_master_of_the_feast);
+        playlist.add(R.raw.fondo_granja);
         playlist.add(R.raw.michael_curtis_no);
         mp_fondo = new MediaPlayer();
         mp_fondo.setVolume(volumenmax,volumenmax);
@@ -89,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         else
             id_raw =0;
         playSong();
-    }
+    }*/
 
     public void main_btnPlay(View v)
     {

@@ -172,6 +172,8 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
+                media.release();
+                mediaPrg.release();
                 Intent resumen  = new Intent(getApplicationContext(), resultados.class);
                 resumen.putExtra("totalp", puntos);
                 startActivity(resumen);
@@ -360,6 +362,10 @@ public class TriviaActivity extends AppCompatActivity {
                                 }catch (Exception e)
                                 {
                                     System.out.println(e.getMessage());
+                                    if(eltime!= null)
+                                        eltime.cancel();
+                                    eltime = null;
+                                    finAct();
                                 }
                             }
                             break;
@@ -524,6 +530,10 @@ public class TriviaActivity extends AppCompatActivity {
                         }catch(Exception e)
                         {
                             System.out.println(e.getMessage());
+                            if(eltime!= null)
+                                eltime.cancel();
+                            eltime = null;
+                            finAct();
                         }
                     }
                 }
@@ -716,6 +726,10 @@ public class TriviaActivity extends AppCompatActivity {
         }catch(Exception e)
         {
             System.out.println(e.getMessage());
+            if(eltime!= null)
+                eltime.cancel();
+            eltime = null;
+            finAct();
         }
 
     }

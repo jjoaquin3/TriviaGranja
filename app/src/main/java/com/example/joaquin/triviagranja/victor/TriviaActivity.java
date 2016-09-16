@@ -31,7 +31,8 @@ import java.util.Random;
 
 public class TriviaActivity extends AppCompatActivity {
 
-    MediaPlayer media;
+    MediaPlayer mediaw;
+    MediaPlayer mediaf;
     MediaPlayer mediaPrg = null;
     boolean flag=true;
     Categoria categorias[];
@@ -64,6 +65,8 @@ public class TriviaActivity extends AppCompatActivity {
         //MainActivity.mp_fondo.stop();
         multiplicador = 0;
         puntos = 0;
+        mediaw=MediaPlayer.create(this,R.raw.win);
+        mediaf=MediaPlayer.create(this,R.raw.fail);
 
         Intent intent = getIntent();
         //verificar si es un demo
@@ -172,8 +175,9 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                media.release();
-                mediaPrg.release();
+                verificarMediawf();
+                mediaw.release();
+                mediaf.release();
                 Intent resumen  = new Intent(getApplicationContext(), resultados.class);
                 resumen.putExtra("totalp", puntos);
                 startActivity(resumen);
@@ -424,14 +428,14 @@ public class TriviaActivity extends AppCompatActivity {
                     eltime.cancel();
                 eltime = null;
             }
-            media=MediaPlayer.create(this,R.raw.win);
-            media.start();
+            //media=MediaPlayer.create(this,R.raw.win);
+            mediaw.start();
         }
         else {
             numBuenas = 0;
             ivs.setImageResource(R.drawable.incorrecta);
-            media=MediaPlayer.create(this,R.raw.fail);
-            media.start();
+            //media=MediaPlayer.create(this,R.raw.fail);
+            mediaf.start();
         }
         tvs.clearAnimation();
         tvs.startAnimation(papadeo);
@@ -506,12 +510,8 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(media != null) {
-                        media.stop();
-                }
-                if(mediaPrg != null) {
-                        mediaPrg.stop();
-                }
+                verificarMediawf();
+                liberarPrg();
 
                 if(!finalizarPorTiempo) {
                     if (bonus) {
@@ -664,6 +664,7 @@ public class TriviaActivity extends AppCompatActivity {
 
         if(eltime != null)
             eltime.cancel();
+            eltime.cancel();
         eltime = null;
     }
 
@@ -702,13 +703,9 @@ public class TriviaActivity extends AppCompatActivity {
                     public void onFinish() {
                         try {
                             touch_active = false;
-                            
-                            if(media != null) {
-                                media.stop();
-                            }
-                            if(mediaPrg != null) {
-                                mediaPrg.stop();
-                            }
+
+                            verificarMediawf();
+                            liberarPrg();
 
                             finalizarPorTiempo = true;
                             tvtime.setText("Fin!");
@@ -734,4 +731,22 @@ public class TriviaActivity extends AppCompatActivity {
 
     }
 
+    private void verificarMediawf()
+    {
+        if(mediaw.isPlaying())
+            mediaw.stop();
+        if(mediaf.isPlaying())
+            mediaf.stop();
+    }
+
+    private void liberarPrg()
+    {
+        if(mediaPrg != null) {
+            if(mediaPrg.isPlaying()) {
+                mediaPrg.stop();
+                mediaPrg.release();
+                mediaPrg = null;
+            }
+        }
+    }
 }

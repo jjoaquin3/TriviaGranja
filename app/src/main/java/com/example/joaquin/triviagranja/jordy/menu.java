@@ -46,11 +46,6 @@ public class menu extends AppCompatActivity {
     private void reproducirBienvenida()
     {
         media.start();
-       /* media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer arg0) {
-                MainActivity.mp_fondo.setVolume(MainActivity.volumenmax,MainActivity.volumenmax);
-            }
-        });*/
     }
 
     public void Actbtn_menu_champey(View v){
@@ -130,18 +125,20 @@ public class menu extends AppCompatActivity {
             case 3://Lugar No. 3 (cerrar todo)
                 NomCat3=lugar;
                 BloqBotones();
-                 Runnable clickButton = new Runnable() {
-                     @Override
-                     public void run() {
-                         Intent ii=new Intent(menu.this, conteo.class);
-                         ii.putExtra("categoria1", NomCat1);
-                         ii.putExtra("categoria2", NomCat2);
-                         ii.putExtra("categoria3", NomCat3);
-                         startActivity(ii);
-                         finish();
-                     }
-                 };
-                 v.postDelayed(clickButton, 2000); //Delay for 2 seconds to show the result
+                Runnable clickButton = new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent ii=new Intent(menu.this, conteo.class);
+                        ii.putExtra("categoria1", NomCat1);
+                        ii.putExtra("categoria2", NomCat2);
+                        ii.putExtra("categoria3", NomCat3);
+                        startActivity(ii);
+                        finish();
+                        media.release();//lanzo error
+                        media=null;
+                    }
+                };
+                v.postDelayed(clickButton, 2000); //Delay for 2 seconds to show the result
                 break;
         }
 
@@ -168,6 +165,8 @@ public class menu extends AppCompatActivity {
         bloquear.setEnabled(false);
         bloquear = (Button)findViewById(R.id.btn_menu_santo_domingo);
         bloquear.setEnabled(false);
+        bloquear = (Button)findViewById(R.id.lkd);
+        bloquear.setEnabled(false);
     }
 
     public void Actbtn_return(View v){
@@ -182,6 +181,8 @@ public class menu extends AppCompatActivity {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
         this.finish();
+        media.release();
+        media=null;
     }
 
     @Override

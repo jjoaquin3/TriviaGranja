@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static MediaPlayer mp_fondo;
-    private ArrayList<Integer> playlist;
     private int id_raw =0;
     public static float volumen = 0.4f;
     public static float volumenmax = 1.0f;

@@ -124,7 +124,6 @@ public class TriviaActivity extends AppCompatActivity {
         if (demo == 0) {
             eltime = new CountDownTimer(limitetiempo, 1000) {
                 TextView tvtime = (TextView) findViewById(R.id.TVtimer);
-
                 public void onTick(long millisUntilFinished) {
                     limitetiempo = millisUntilFinished;
                     String texto = "";
@@ -140,10 +139,8 @@ public class TriviaActivity extends AppCompatActivity {
                             tvtime.setTextColor(Color.RED);
                     }
                     texto += String.valueOf(segundos);
-
                     tvtime.setText(texto);
                 }
-
                 public void onFinish() {
                     touch_active = false;
                     finalizarPorTiempo = true;
@@ -175,9 +172,7 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                verificarMediawf();
-                mediaw.release();
-                mediaf.release();
+
                 Intent resumen  = new Intent(getApplicationContext(), resultados.class);
                 resumen.putExtra("totalp", puntos);
                 startActivity(resumen);
@@ -319,6 +314,8 @@ public class TriviaActivity extends AppCompatActivity {
                     if(eltime!= null)
                         eltime.cancel();
                     eltime = null;
+                    verificarMediawf();
+                    liberarPrg();
                     finAct();
 
                 }
@@ -328,6 +325,8 @@ public class TriviaActivity extends AppCompatActivity {
                 if(eltime!= null)
                     eltime.cancel();
                 eltime = null;
+                verificarMediawf();
+                liberarPrg();
                 finAct();
 
             }
@@ -337,13 +336,24 @@ public class TriviaActivity extends AppCompatActivity {
             System.out.println("fin");
             if(demo == 1)
             {
-                this.finish();
+                liberarPrg();
+                verificarMediawf();
+
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TriviaActivity.this.finish();
+                    }
+                }, 1000);
+
             }
             else {
                 //pasar al activity de respuestas
                 if(eltime!= null)
                     eltime.cancel();
                 eltime = null;
+                verificarMediawf();
+                liberarPrg();
                 finAct();
             }
         }
@@ -369,6 +379,8 @@ public class TriviaActivity extends AppCompatActivity {
                                     if(eltime!= null)
                                         eltime.cancel();
                                     eltime = null;
+                                    verificarMediawf();
+                                    liberarPrg();
                                     finAct();
                                 }
                             }
@@ -510,8 +522,9 @@ public class TriviaActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                verificarMediawf();
-                liberarPrg();
+
+                verificarMediawfsin();
+                liberarPrgsin();
 
                 if(!finalizarPorTiempo) {
                     if (bonus) {
@@ -529,6 +542,8 @@ public class TriviaActivity extends AppCompatActivity {
                             iniciar();
                         }catch(Exception e)
                         {
+                            liberarPrg();
+                            verificarMediawf();
                             System.out.println(e.getMessage());
                             if(eltime!= null)
                                 eltime.cancel();
@@ -618,7 +633,7 @@ public class TriviaActivity extends AppCompatActivity {
     public void onBackPressed() {
         //this.finish();
 
-}
+    }
     private int[] SelPregBonus(){
         int aux;
         int[]a = new int[3];
@@ -664,7 +679,6 @@ public class TriviaActivity extends AppCompatActivity {
 
         if(eltime != null)
             eltime.cancel();
-            eltime.cancel();
         eltime = null;
     }
 
@@ -703,12 +717,10 @@ public class TriviaActivity extends AppCompatActivity {
                     public void onFinish() {
                         try {
                             touch_active = false;
-
-                            verificarMediawf();
-                            liberarPrg();
-
                             finalizarPorTiempo = true;
                             tvtime.setText("Fin!");
+                            verificarMediawf();
+                            liberarPrg();
                             finAct();
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
@@ -726,6 +738,8 @@ public class TriviaActivity extends AppCompatActivity {
             if(eltime!= null)
                 eltime.cancel();
             eltime = null;
+            verificarMediawf();
+            liberarPrg();
             finAct();
         }
 
@@ -733,20 +747,67 @@ public class TriviaActivity extends AppCompatActivity {
 
     private void verificarMediawf()
     {
-        if(mediaw.isPlaying())
-            mediaw.stop();
-        if(mediaf.isPlaying())
-            mediaf.stop();
+        try {
+        if(mediaw != null) {
+            if (mediaw.isPlaying())
+                mediaw.stop();
+            mediaw.release();
+            mediaw = null;
+        }
+
+        if(mediaf != null) {
+            if (mediaf.isPlaying())
+                mediaf.stop();
+            mediaf.release();
+            mediaf = null;
+        }
+
+        }catch (Exception e){
+            System.out.println("Capture el error, activity *TriviaActivity* - linea:766");
+        }
+    }
+
+    private void verificarMediawfsin()
+    {
+        try{
+            if(mediaw != null) {
+                if (mediaw.isPlaying())
+                    mediaw.stop();
+            }
+
+            if(mediaf != null) {
+                if (mediaf.isPlaying())
+                    mediaf.stop();
+            }
+        }catch (Exception e){
+            System.out.println("Capture el error, activity *TriviaActivity* - linea:766");
+        }
     }
 
     private void liberarPrg()
     {
-        if(mediaPrg != null) {
-            if(mediaPrg.isPlaying()) {
-                mediaPrg.stop();
+        try {
+            if(mediaPrg != null) {
+                if(mediaPrg.isPlaying())
+                    mediaPrg.stop();
                 mediaPrg.release();
                 mediaPrg = null;
             }
+        }catch (Exception e){
+            System.out.println("Capture el error, activity *TriviaActivity* - linea:766");
+        }
+    }
+
+    private void liberarPrgsin()
+    {
+        try{
+            if(mediaPrg != null) {
+                if(mediaPrg.isPlaying())
+                    mediaPrg.stop();
+                mediaPrg = null;
+            }
+        }catch (Exception e){
+            System.out.println("Capture el error, activity *TriviaActivity* - linea:766");
         }
     }
 }

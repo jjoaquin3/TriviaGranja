@@ -118,6 +118,8 @@ public class conteo extends AppCompatActivity {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
         this.finish();
+        mp_fondo_conteo.release();
+        mp_fondo_conteo=null;
     }
 
     private void finConteo()
@@ -135,6 +137,8 @@ public class conteo extends AppCompatActivity {
             //MainActivity.mp_fondo.start();
             startActivity(inicio);
             this.finish();
+            mp_fondo_conteo.release();
+            mp_fondo_conteo=null;
         }
     }
 
@@ -150,6 +154,9 @@ public class conteo extends AppCompatActivity {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
         this.finish();
+        mp_fondo_conteo.release();
+        mp_fondo_conteo=null;
+
     }
 
     @Override
@@ -163,7 +170,7 @@ public class conteo extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MainActivity.mp_fondo.start();
+        MainActivity.mp_fondo.start();//lanzo error
     }
 
 

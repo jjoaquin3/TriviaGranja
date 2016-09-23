@@ -41,14 +41,10 @@ public class resultados extends FragmentActivity {
             puntaje= extras.getInt("totalp");
         }
         mp_resumen_ganador = new MediaPlayer();
-        resumen_ganador.contexto=this;
         setContentView(R.layout.activity_resultados);
         ViewPager viewPager = (ViewPager) findViewById(R.id.Mipager);
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            // This method will be invoked when a new page becomes selected.
             @Override
             public void onPageSelected(int position) {
              if (position==1){
@@ -65,7 +61,6 @@ public class resultados extends FragmentActivity {
                  }
              }
             }
-            // This method will be invoked when the current page is scrolled
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 // Code goes here
@@ -93,24 +88,23 @@ public class resultados extends FragmentActivity {
             if(mp_resumen_ganador.isPlaying())
             {
                 mp_resumen_ganador.stop();
-                mp_resumen_ganador.reset();
+                mp_resumen_ganador.release();
             }
+            this.finish();
         } catch (Exception e)
         {
-            Log.v(getString(R.string.app_name), e.getMessage());
+            Log.v(getString(R.string.app_name), "Error del flujo-Activity: *resultados* linea: 100");
+            this.finish();
         }
-        this.finish();
     }
 
     @Override
     public void onBackPressed() {
-
+            //boton back bloqueado
     }
 
     public static class resumen_ganador extends Fragment {
-
         public static Context contexto;
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -118,7 +112,6 @@ public class resultados extends FragmentActivity {
             DarPremio(rootView,resultados.puntaje,resultados.TF);
             return rootView;
         }
-
         private void DarPremio(View padre, int conteo, Typeface fuente){
             TextView txt = (TextView)padre.findViewById(R.id.text_ganador_desc);
             txt.setTypeface(fuente);
@@ -163,33 +156,19 @@ public class resultados extends FragmentActivity {
     }
 
     public class TabsPagerAdapter extends FragmentPagerAdapter {
-
         public TabsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
         @Override
         public android.support.v4.app.Fragment getItem(int index) {
-
             switch (index) {
                 case 0:
-                    // Top Rated fragment activity
-                    //MainActivity.mp_fondo.pause();
                     return new resumen_punteo();
                 case 1:
-                    // Games fragment activity
-                    if(mp_resumen_ganador.isPlaying())
-                    {
-                        mp_resumen_ganador.stop();
-                        mp_resumen_ganador.reset();
-                    }
-                    /*  if(!MainActivity.mp_fondo.isPlaying())
-                        MainActivity.mp_fondo.start();*/
                     return new resumen_ganador();
             }
             return null;
         }
-
         @Override
         public int getCount() {
             // get item count - equal to number of tabs

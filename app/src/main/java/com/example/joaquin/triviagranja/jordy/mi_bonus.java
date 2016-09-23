@@ -8,13 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.joaquin.triviagranja.MainActivity;
 import com.example.joaquin.triviagranja.R;
 import com.example.joaquin.triviagranja.victor.TriviaActivity;
 
@@ -27,29 +24,36 @@ public class mi_bonus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_bonus);
+
+
         Button tv;
         TextView tv_t;
         Typeface TF;
-
-        Bundle extras = getIntent().getExtras();
-        TF = Typeface.createFromAsset(getAssets(),"font/puntosynumeros.ttf");
-        tv_t = (TextView)findViewById(R.id.bonus_TVpts);
-        tv_t.setTypeface(TF);
-        puntosG=extras.getInt("p0");
-        logica(extras.getInt("p1"));
-        tv_t.setText("+"+ puntosG.toString() +" pts");
-
-        tv = (Button)findViewById(R.id.bonus_IVrespuesta1_1);
-        tv.setTypeface(TF);
-        tv.setTextColor(Color.rgb(77,41,3));
-        tv = (Button)findViewById(R.id.bonus_IVrespuesta2_2);
-        tv.setTypeface(TF);
-        tv.setTextColor(Color.rgb(77,41,3));
+        try {
+            Bundle extras = getIntent().getExtras();
+            TF = Typeface.createFromAsset(getAssets(),"font/puntosynumeros.ttf");
+            tv_t = (TextView)findViewById(R.id.bonus_TVpts);
+            tv_t.setTypeface(TF);
+            puntosG=extras.getInt("p0");
+            logica(extras.getInt("p1"));
+            tv_t.setText("+"+ puntosG.toString() +" pts");
+            tv = (Button)findViewById(R.id.bonus_IVrespuesta1_1);
+            tv.setTypeface(TF);
+            tv.setTextColor(Color.rgb(77,41,3));
+            tv = (Button)findViewById(R.id.bonus_IVrespuesta2_2);
+            tv.setTypeface(TF);
+            tv.setTextColor(Color.rgb(77,41,3));
+        } catch (Exception e) {
+            lee_pregunta.release();
+            lee_pregunta=null;
+            finish();
+            Log.v(getString(R.string.app_name), "Error del flujo-Activity: *mi_bonus* linea: 49");
+        }
     }
 
 
 
-    private void logica(int i){
+    private void logica(int i) throws Exception{
         Button tv;
         TextView tv_t;
 
@@ -113,7 +117,7 @@ public class mi_bonus extends AppCompatActivity {
         }
     }
 
-    public void ask1(View v){//true
+    public void ask1(View v)throws Exception{//true
         Button tv3= (Button)findViewById(R.id.bonus_IVrespuesta2_2);
         v.setEnabled(false);
         tv3.setEnabled(false);
@@ -133,7 +137,7 @@ public class mi_bonus extends AppCompatActivity {
         }
         finalizar(v);
     }
-    public void ask2(View v){//false
+    public void ask2(View v) throws Exception{//false
         Button tv3= (Button)findViewById(R.id.bonus_IVrespuesta1_1);
         v.setEnabled(false);
         tv3.setEnabled(false);
@@ -154,22 +158,23 @@ public class mi_bonus extends AppCompatActivity {
         finalizar(v);
     }
 
-    private void colocarAnimacion(View v)
-    {
+    private void colocarAnimacion(View v)throws Exception{
         Animation animScale = AnimationUtils.loadAnimation(this,R.anim.anim_scale);
         v.startAnimation(animScale);
     }
-    private void finalizar(View v){
+    private void finalizar(View v) throws Exception{
         Runnable clickButton = new Runnable() {
             @Override
             public void run() {
+                lee_pregunta.release();
+                lee_pregunta=null;
                 finish();
             }
         };
         v.postDelayed(clickButton, 2000); //Delay for 2 seconds to show the result
     }
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
         MainActivity.mp_fondo.pause();
@@ -181,19 +186,18 @@ public class mi_bonus extends AppCompatActivity {
             }
         } catch (Exception e)
         {
-            Log.v(getString(R.string.app_name), e.getMessage());
+            Log.v(getString(R.string.app_name), "Error del flujo-Activity: *mi_bonus* linea: 186");
         }
-    }
+    }*/
+
 
     @Override
     protected void onResume() {
         super.onResume();
-        //MainActivity.mp_fondo.start();
     }
 
     @Override
     public void onBackPressed() {
-        //this.finish();
+        //boton bloqueado
     }
-
 }

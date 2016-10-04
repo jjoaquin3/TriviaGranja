@@ -19,25 +19,25 @@
         android:id="@+id/r_seccion_titulo"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0"
+        android:layout_weight="0.1"
         android:background="@android:color/transparent"
         >
             <LinearLayout
-                android:layout_width="100sp"
+                android:layout_width="250sp"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:background="@android:color/transparent"
                 >
             </LinearLayout>
             <TextView
-                android:layout_width="0sp"
-                android:layout_height="300sp"
+                android:layout_width="10sp"
+                android:layout_height="400sp"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/tex_r_titulo"
                 android:background="@drawable/resultado_r1" />
             <LinearLayout
-                android:layout_width="100sp"
+                android:layout_width="250sp"
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
             </LinearLayout>
@@ -59,8 +59,8 @@
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/text_punteo"
-                android:text="100pts."
-                android:textSize="180sp"
+                android:text="120pts."
+                android:textSize="280sp"
                 android:textAlignment="center" />
 
 

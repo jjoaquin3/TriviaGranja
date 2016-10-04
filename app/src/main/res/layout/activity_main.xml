@@ -23,8 +23,8 @@
             android:id="@+id/LinearLayout_main_logo">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="781dp"
+                android:layout_height="606dp"
                 android:id="@+id/imageView_main_logo"
                 android:layout_gravity="center_horizontal|top"
                 android:contentDescription="@string/main_logo"
@@ -39,16 +39,16 @@
             android:id="@+id/LinearLayout_main_play">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="428dp"
+                android:layout_height="414dp"
                 android:id="@+id/button_main_play"
                 android:layout_gravity="top"
                 android:background="@drawable/main_play_efecto"
                 android:onClick="main_btnPlay" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="368dp"
+                android:layout_height="329dp"
                 android:id="@+id/button_main_demo"
                 android:background="@drawable/main_demo_efecto"
                 android:onClick="main_btnDemo" />
@@ -62,8 +62,8 @@
             android:id="@+id/FrameLayout_main_video">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="296dp"
+                android:layout_height="284dp"
                 android:id="@+id/button_main_video"
                 android:background="@drawable/main_video_efecto"
                 android:clickable="false"

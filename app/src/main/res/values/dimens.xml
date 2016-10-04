@@ -10,23 +10,25 @@
 
 
     <!-- pantalla configuracion-->
-     <!-- <dimen name="TTconfiguracion">100sp</dimen>
-    <dimen name="ATTconfiguracion">95sp</dimen>
-    <dimen name="Margenconfiguracion">10dp</dimen>
-    <dimen name="Margenbetween">15dp</dimen>
-    <dimen name="attConfM">50sp</dimen>
-    <dimen name="BTaddPregunta">110dp</dimen> -->
+    <!-- <dimen name="TTconfiguracion">100sp</dimen>
+   <dimen name="ATTconfiguracion">95sp</dimen>
+   <dimen name="Margenconfiguracion">10dp</dimen>
+   <dimen name="Margenbetween">15dp</dimen>
+   <dimen name="attConfM">50sp</dimen>
+   <dimen name="BTaddPregunta">110dp</dimen> -->
 
     <!-- pantalla configuracion pruebas-->
- <!--   <dimen name="TTconfiguracion">25sp</dimen>
-    <dimen name="ATTconfiguracion">20sp</dimen>
-    <dimen name="ATTconfiguracion2">15sp</dimen>
-    <dimen name="Margenconfiguracion">10dp</dimen>
-    <dimen name="Margenbetween">10dp</dimen>
-    <dimen name="attConfM">22sp</dimen>
-    <dimen name="confPET">250dp</dimen>
-    <dimen name="ATTconf">15sp</dimen>
-    <dimen name="BTaddPregunta">50dp</dimen>-->
+    <!--
+        <dimen name="TTconfiguracion">25sp</dimen>
+        <dimen name="ATTconfiguracion">20sp</dimen>
+        <dimen name="ATTconfiguracion2">15sp</dimen>
+        <dimen name="Margenconfiguracion">10dp</dimen>
+        <dimen name="Margenbetween">10dp</dimen>
+        <dimen name="attConfM">22sp</dimen>
+        <dimen name="confPET">250dp</dimen>
+        <dimen name="ATTconf">15sp</dimen>
+        <dimen name="BTaddPregunta">50dp</dimen>
+    -->
 
     <!-- pantalla 10 configuracion-->
     <dimen name="TTconfiguracion">45sp</dimen>
@@ -62,34 +64,36 @@
     <dimen name="padding_start_tmp">75dp</dimen>-->
 
     <!-- dimensiones Activity Trivia Pruebas-->
-<!--    <dimen name="Margen_Top_Checks_Respuestas">80dp</dimen>
-    <dimen name="Margen_Entre_Checks_Respuestas">10dp</dimen>
-    <dimen name="Margen_Entre_Respuestas">10dp</dimen>
-    <dimen name="Text_Size_Preguntas">17sp</dimen>
-    <dimen name="Padding_Top_Pregunta">20dp</dimen>
-    <dimen name="Padding_Lateral_Pregunta">55dp</dimen>
-    <dimen name="Text_Size_Respuestas">20sp</dimen>
-    <dimen name="Text_Size_Respuesta_Seleccionada">20sp</dimen>
-    <dimen name="Tamanho_Check">25dp</dimen>
-    <dimen name="Margen_Izquierod_Respuestas">75dp</dimen>
-    <dimen name="Margen_paddingEnd_Respuestas">50dp</dimen>
-    <dimen name="Ancho_Titulo">400dp</dimen>
-    <dimen name="Alto_Titulo">85dp</dimen>
-    <dimen name="Ancho_Tiempo">150dp</dimen>
-    <dimen name="Alto_Tiempo">75dp</dimen>
-    <dimen name="Tamanho_Puntos">75dp</dimen>
-    <dimen name="tamanho_pts">15sp</dimen>
-    <dimen name="tamanho_tmp">25sp</dimen>
-    <dimen name="padding_top_tmp">15dp</dimen>
-    <dimen name="padding_start_tmp">30dp</dimen>-->
+    <!--
+        <dimen name="Margen_Top_Checks_Respuestas">80dp</dimen>
+        <dimen name="Margen_Entre_Checks_Respuestas">10dp</dimen>
+        <dimen name="Margen_Entre_Respuestas">10dp</dimen>
+        <dimen name="Text_Size_Preguntas">17sp</dimen>
+        <dimen name="Padding_Top_Pregunta">20dp</dimen>
+        <dimen name="Padding_Lateral_Pregunta">55dp</dimen>
+        <dimen name="Text_Size_Respuestas">20sp</dimen>
+        <dimen name="Text_Size_Respuesta_Seleccionada">20sp</dimen>
+        <dimen name="Tamanho_Check">25dp</dimen>
+        <dimen name="Margen_Izquierod_Respuestas">75dp</dimen>
+        <dimen name="Margen_paddingEnd_Respuestas">50dp</dimen>
+        <dimen name="Ancho_Titulo">400dp</dimen>
+        <dimen name="Alto_Titulo">85dp</dimen>
+        <dimen name="Ancho_Tiempo">150dp</dimen>
+        <dimen name="Alto_Tiempo">75dp</dimen>
+        <dimen name="Tamanho_Puntos">75dp</dimen>
+        <dimen name="tamanho_pts">15sp</dimen>
+        <dimen name="tamanho_tmp">25sp</dimen>
+        <dimen name="padding_top_tmp">15dp</dimen>
+        <dimen name="padding_start_tmp">30dp</dimen>
+    -->
 
 
     <!-- dimensiones 10 Activity Trivia Preubas-->
-        <dimen name="Margen_Top_Checks_Respuestas">200dp</dimen>
+    <dimen name="Margen_Top_Checks_Respuestas">200dp</dimen>
     <dimen name="Margen_Entre_Checks_Respuestas">20dp</dimen>
     <dimen name="Margen_Entre_Respuestas">20dp</dimen>
-    <dimen name="Text_Size_Preguntas">40sp</dimen>
-    <dimen name="Padding_Top_Pregunta">40dp</dimen>
+    <dimen name="Text_Size_Preguntas">35sp</dimen>
+    <dimen name="Padding_Top_Pregunta">20dp</dimen>
     <dimen name="Padding_Lateral_Pregunta">65dp</dimen>
     <dimen name="Text_Size_Respuestas">40sp</dimen>
     <dimen name="Text_Size_Respuesta_Seleccionada">20sp</dimen>
